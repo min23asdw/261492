@@ -19,10 +19,47 @@
 % \titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
 % \titlespacing*{\section}{0pt}{10ex}{0pt}
 
-\section{ชุดข้อมูลฝึกสอน}
+\section{ชุดข้อมูลฝึกสอน Product database}
+ข้อมูลที่ใช้ในการ train mode โดยมีสินค้าประมาณ 100 ชนิด โดยจัดเก็บข้อมูลใช้กล้องมือถือ ในการถ่ายภาพในมุมต่างๆ
+ของสินค้าชนิดนั้นๆ ตามมุมต่างๆ จำนวนชนิดละ N รูป โดยจัดเก็บใน  และทำการดึงข้อมูลมา train ผ่าน Google Colab
+ โดยโครงสร้างการเก็บข้อมูลจะเป็นดังรูป
 
 
-\section{model}
+ 
+\begin{center}
+  \includegraphics[scale=0.45]{pic/st.png}
+\end{center}
+  โดย
+ 
+\section{Transfer Learning}
+Xception is a convolutional neural network that is 71 layers deep.
+ You can load a pretrained version of the network trained on more than a million images from the ImageNet database [1].
+  The pretrained network can classify images into 1000 object categories, such as keyboard, mouse, pencil, and many animals.
+
+  ซึ่งสามารถ
+\begin{center}
+  \includegraphics[scale=0.35]{pic/x.png}
+\end{center}
+  
+\subsection{Model Architecture}
+โดยโมเดลในโครงงานนี้จะใช้ Xception pre-trained มาใช้ในการแยกคุณลักษณะของข้อมูล  และสร้างโมเดลมาต่อท้ายเพื่อ เรียนรู้จากข้อมูลที่ Xception แยกออกมาได้
+\begin{center}
+  \includegraphics[scale=0.45]{pic/model.png}
+\end{center}
+  
+นำมาต่อด้วย classifier ซึ่งเป็น Dense Layers สำหรับการ classify ชนิดของ products จากชุดข้อมูล
+
+% \section{Product database}
+% Section 2 text.
+
+ 
+
+ 
+% \subsection{Transfer Learning}
+
+Subsection 1 text
+
+\section{classification products}
 
 
 
@@ -36,7 +73,10 @@
 % \label{fig:webrtc structure}
 % \end{figure}
 \newpage
-\section{การพัฒนาเว็บไซด์}
+\section{การพัฒนาweb dashboard และ application }
+
+ออกแบบ UI/UX ของเว็บไซต์และ application ด้วย Figma
+ในส่วน application จะ  ใช้งาน Flutter และภาษา Dart และใช้ module  WebRTC ในการติดต่อกับ classifier ของ Backend
 
 \section{แผนภาพกระแสข้อมูล (Data Flow Diagram)}
 \begin{figure}[h]
