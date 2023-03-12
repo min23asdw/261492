@@ -111,14 +111,14 @@ Subsection 1 text
 % \end{figure}
 \newpage
 
-\section{การพัฒนา application }
-ใช้ Flutter ในการสร้าง application ในส่วนของผู้ใช้โดยใช้ service ของ WebRTC ติดต่อกับ classification server ที่ได้ทำการ train ไว้แล้ว
-โดยจะ application จะทำการ streaming ภาพสินค้าที่ลูกคต้าถ่าย ผ่าน WebRTC ไปยัง server ของทางร้าน ที่มี model classifier อยู่
-และ server ของทางร้านก็ classification ว่าเป็นสินค้าชนิดใด และตอบกับมายัง application
+\section{การพัฒนา Mobile Application}
+ใช้ Flutter ในการสร้าง Mobile Application ในส่วนของผู้ใช้โดยใช้ service ของ WebRTC ติดต่อกับ Classification server ที่ได้ทำการฝึกสอนไว้แล้ว
+โดยจะแอพลิเคชันจะมีฟังก์ชันที่ทำการสตรีมมิ่งภาพสินค้าที่ลูกค้าถ่ายผ่าน WebRTC ไปยัง server ของทางร้านซึ่งมี Model classifier อยู่
+จากนั้น Server ของทางร้านจะ Classifiy ว่าเป็นสินค้าชนิดใด และตอบกลับมายังแอพลิเคชันเพื่อแสดงผลให้กับผู้ใช้งาน
 \subsection{Requirement Specification}  
 
 \begin{enumerate}
-  \item ผู้คนทั่วไปสามารถลงทะเบียนเข้าใช้งานได้ผ่าน Email , SSO , หมายเลขโทรศัพท์มือถือ
+  \item ผู้คนทั่วไปสามารถลงทะเบียนเข้าใช้งานได้ผ่าน SSO อีเมล์ และหมายเลขโทรศัพท์มือถือ
   \item สามารถเชื่อมต่อกับข้อมูลร้านค้าได้ผ่านการแสกนคิวอาร์โค้ดเข้าใช้งานร้านค้า
   \item สามารถใช้กล้องโทรศัพท์มือถือแสกนสินค้าเพื่อสตรีมภาพ Classification server เพื่อทำการดึงข้อมูลสินค้าจาก Server ของร้านค้ามาแสดงผลบนแอพลิเคชัน
   \item สามารถเพิ่มหรือลดสินค้าในตะกร้าได้
@@ -159,10 +159,10 @@ Subsection 1 text
     \label{fig:Store Website Dashboard Database Schema}
     \end{figure}
   
-\section{การพัฒนาweb dashboard }
+\section{การพัฒนา Website Dashboard }
 
 
-ออกแบบ UI/UX ของเว็บไซต์และ application ด้วย Figma
+ออกแบบ UI/UX ของ Wedsite Dashboard และ Mobile Application ด้วย Figma
 หลังจากการออกแบบ และจัดการตั้งค่าฐานข้อมูลเสร็จแล้ว
  ก็จะพัฒนาในส่วนของเว็บไซต์ทางฝั่งร้านค้าโดยใช้ Supabase ในการโฮสติ้งเว็บไซต์ 
  และเชื่อมต่อกับฐานข้อมูลที่ได้ตั้งค่าไว้ โดยใช้ Flask framework 
@@ -173,7 +173,7 @@ Subsection 1 text
     \item สามารถเข้าใช้งานได้ผ่านการยืนยันตัวตนเป็น Administers เท่านั้น โดยสามารถมีได้ 1-5 คน
     \item สามารถดูคลังสินค้า และแก้ไขข้อมูลสินค้าในแต่ละชนิดได้แบบเรียลไทม์
     \item สามารถดูสถิติยอดขายสินค้าได้ทั้งแบบรายวัน รายเดือน และรายปี โดยแบ่งได้ 2 แบบ คือตามชนิดสินค้า และประเภทสินค้า
-    \item สามารถกดูประวัติการขายตามออเดอร์ของลูกค้าแต่ละคนได้ และดูข้อมูลของแต่ละออร์เดอร์ได้
+    \item สามารถดูประวัติการขายตามออเดอร์ของลูกค้าแต่ละคนได้ และดูข้อมูลของแต่ละออร์เดอร์ได้
 \end{enumerate}
 
 
