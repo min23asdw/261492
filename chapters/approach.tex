@@ -5,7 +5,8 @@
 \fi
 }
 
-ในบทนี้จะกล่าวถึงหลักการ และการออกแบบระบบ
+ในบทนี ้ จะกล่าวถึงหลักการ,  การนําทฤษฎีที่เกี่ยวข้องมาประยุกต์ใช้  และการออกแบบของระบบ
+
 
 \makeatletter
 
@@ -18,29 +19,53 @@
 %\vspace{2ex}
 % \titleformat{\section}{\normalfont\bfseries}{\thesection}{1em}{}
 % \titlespacing*{\section}{0pt}{10ex}{0pt}
-
+\section{โครงสร้างของระบบ}
+% \ref{fig:Overall project structure}
+\begin{figure}[h]
+  \begin{center}
+  % \includegraphics{pic/webrtc.png}
+  \vspace{0.5cm}\includegraphics[scale=0.5]{pic/overall_2.png}
+  \end{center}
+  
+  \caption[Overall project structure]{Overall project structure}
+  \label{fig:Overall project structure}
+  \end{figure}
 \section{เตรียมชุดข้อมูลฝึกสอน}
 ข้อมูลที่ใช้ในการ train mode โดยมีสินค้าประมาณ 100 ชนิด โดยจัดเก็บข้อมูลใช้กล้องมือถือ ในการถ่ายภาพในมุมต่างๆ
 ของสินค้าชนิดนั้นๆ ตามมุมต่างๆ จำนวนชนิดละ N รูป โดยจัดเก็บใน  และทำการดึงข้อมูลมา train ผ่าน Google Colab
  โดยโครงสร้างการเก็บข้อมูลจะเป็นดังรูป
 
-
- 
 \begin{center}
-  \includegraphics[scale=0.45]{pic/st.png}
+  \includegraphics[scale=0.35]{pic/st.png}
 \end{center}
-  โดย
- 
- 
+
+\section{การเพิ่ม traing data}
+โดยสินค้า 1 ชนิด ทำการถ่ายภาพ 6 รูป ในมุมที่แตกต่างกัน 
+โดยในแต่ละ 1 รูปภาพที่ถ่าย จะแปลงเป็นรูปภาพ RGB ขนาด 224x224 pixel
+และในแต่ละรูปเพื่อให้มี train dataset จำนวนมาก นำไปหมุนและกลับด้าน ด้วยมุม -20,-15,-10,-5,0,5,10,15,20 องศา
+โดย 1 รูปภาพผ่านการ generate datasets จะกลายเป็น 18 รูปภาพซึ่งมีความแตกต่างกันเล็กน้อย
+\begin{figure}[h]
+  \begin{center}
+  % \includegraphics{pic/webrtc.png}
+  \includegraphics[scale=0.4]{pic/genmore.png}
+  \end{center}
   
+  \caption[Dataset generator]{Dataset generator}
+  \label{fig:Dataset generator}
+  \end{figure}
+
+  \newpage
 \subsection{Model Architecture}
-โดยโมเดลในโครงงานนี้จะใช้ Xception pre-trained มาใช้ในการแยกคุณลักษณะของข้อมูล  และสร้างโมเดลมาต่อท้ายเพื่อ เรียนรู้จากข้อมูลที่ Xception แยกออกมาได้
+โดยโมเดลในโครงงานนี้จะใช้ Xception pre-trained มาใช้ในการแยกคุณลักษณะเด่นของรูปภาพ  และสร้างโมเดลมาต่อท้ายเพื่อ 
+เรียนรู้ลักษณะเด่นจากที่ Xception ทำการแยกออกมาได้
 \begin{center}
   \includegraphics[scale=0.45]{pic/model.png}
 \end{center}
   
-นำมาต่อด้วย classifier ซึ่งเป็น Dense Layers สำหรับการ classify ชนิดของ products จากชุดข้อมูล
-
+โดยต่อท้ายด้วย fully connected node ที่เรียกว่า Dense layer ซึ่งทำหน้าที่เป็น classifier 
+ โดยมี output layer ที่มีจำนวน node เท่ากับจำนวนสินค้า สำหรับการ classify ชนิดของ
+  products จาก รูปภาพ
+ 
 % \section{Product database}
 % Section 2 text.
 
@@ -52,7 +77,11 @@
 Subsection 1 text
 
 \section{classification products}
+จากรูปภาพใน 48 class ผ่านการ generate datasets จะมี dataset ทั้งหมด 4432 sample
+ ทำการแบ่งเป็น train 3546 sample และ  886 sample สำหรับการ evaluate 
+โดยจาก train 3546 แบ่ง 50\% สำหรับการ validation ในระหว่างการ train model
 
+\par ผลลัพธ์ จากการ train \& validation ด้วย 3546 sample เป็นจำนวน 40 Epoch
 \begin{figure}[h]
   \begin{center}
   % \includegraphics{pic/webrtc.png}
@@ -62,6 +91,14 @@ Subsection 1 text
   \caption[Train results]{Train results}
   \label{fig:Train results}
   \end{figure}
+
+  % โดยเมื่อนำ evaluate มาหา cross_entropy 0.23343226313591003, 0.944695234298706 accuracy
+
+  และทำการ save model ที่มีความแม่นยำระดับนึง
+   สำหรับเป็น service ในการ classify products ของ application ผ่าน aiortc  และเว็บ WebRTC
+
+  % score (cross_entropy, accuracy):
+%  [0.23343226313591003, 0.944695234298706]
 
 % \begin{figure}[h]
 % \begin{center}
@@ -75,18 +112,94 @@ Subsection 1 text
 \newpage
 
 \section{การพัฒนา application }
+ใช้ Flutter ในการสร้าง application ในส่วนของผู้ใช้โดยใช้ service ของ WebRTC ติดต่อกับ classification server ที่ได้ทำการ train ไว้แล้ว
+โดยจะ application จะทำการ streaming ภาพสินค้าที่ลูกคต้าถ่าย ผ่าน WebRTC ไปยัง server ของทางร้าน ที่มี model classifier อยู่
+และ server ของทางร้านก็ classification ว่าเป็นสินค้าชนิดใด และตอบกับมายัง application
+\subsection{Requirement Specification}  
+
+\begin{enumerate}
+  \item ผู้คนทั่วไปสามารถลงทะเบียนเข้าใช้งานได้ผ่าน Email , SSO , หมายเลขโทรศัพท์มือถือ
+  \item สามารถเชื่อมต่อกับข้อมูลร้านค้าได้ผ่านการแสกนคิวอาร์โค้ดเข้าใช้งานร้านค้า
+  \item สามารถใช้กล้องโทรศัพท์มือถือแสกนสินค้าเพื่อสตรีมภาพ Classification server เพื่อทำการดึงข้อมูลสินค้าจาก Server ของร้านค้ามาแสดงผลบนแอพลิเคชัน
+  \item สามารถเพิ่มหรือลดสินค้าในตะกร้าได้
+  \item สามารถทำการชำระเงินได้ผ่าน Payment gateway ในตัวแอพลิเคชัน
+  \item สามารถ Checkout จากร้านค้าผ่านการแสกนคิวอาร์โค้ดออกจากร้านค้า
+ 
+\end{enumerate}
 
 
-\section{Product database }
+\section{การเตรียมฐานข้อมูล}
+ในการเก็บฐานข้อมูลจะแบ่งเป็นฐานข้อมูลสองตัว โดยใช้ Supabase 
+ในการสร้างโครงการ และจัดฐานข้อมูลทั้งหมดแบบ SQL ได้แก่ 
+\subsection{ฐานข้อมูลของระบบ}
+สำหรับเก็บข้อมูลร้านค้าที่เข้าร่วม และประวัติการซื้อสินค้าของผู้ใช้งานแอพลิเคชันมือถือ ซึ่งมี Database schema ดังนี้ 
+\begin{figure}[h]
+\begin{center}
+  % \includegraphics{pic/webrtc.png}
+  \includegraphics[scale=0.3]{pic/datamobile.png}
+  \end{center}
+  
+  \caption[Mobile Application Database Schema]{Mobile Application Database Schema}
+  \label{fig:Mobile Application Database Schema}
+  \end{figure}
 
+
+  
+\subsection{ฐานข้อมูลในแต่ละร้านค้า}
+สำหรับเก็บข้อมูลสินค้า และประวัติยอดขายของร้านค้า โดยร้านค้าแต่ละร้านจะมีฐานข้อมูลเป็นของตนเองเพื่อใช้งานกับ Server ของร้านนั้น ๆ
+ โดยตรง ซึ่งจะมี Database schema ดังนี้ 
+
+ \begin{figure}[h]
+  \begin{center}
+    % \includegraphics{pic/webrtc.png}
+    \includegraphics[scale=0.3]{pic/dataweb.png}
+    \end{center}
+    
+    \caption[Store Website Dashboard Database Schema]{Store Website Dashboard Database Schema}
+    \label{fig:Store Website Dashboard Database Schema}
+    \end{figure}
+  
 \section{การพัฒนาweb dashboard }
 
-ออกแบบ UI/UX ของเว็บไซต์และ application ด้วย Figma
-ในส่วน application จะ  ใช้งาน Flutter และภาษา Dart และใช้ module  WebRTC ในการติดต่อกับ classifier ของ Backend
 
-เพื่อ  sending a video feed from a flutter app to a python backend
+ออกแบบ UI/UX ของเว็บไซต์และ application ด้วย Figma
+หลังจากการออกแบบ และจัดการตั้งค่าฐานข้อมูลเสร็จแล้ว
+ ก็จะพัฒนาในส่วนของเว็บไซต์ทางฝั่งร้านค้าโดยใช้ Supabase ในการโฮสติ้งเว็บไซต์ 
+ และเชื่อมต่อกับฐานข้อมูลที่ได้ตั้งค่าไว้ โดยใช้ Flask framework 
+ ในการจัดการ API และ Python ในการจัดการระบบ Backend ของเว็บไซต์โดยใช้ SQLAlchemy
+  ในการดึงข้อมูลจากฐานข้อมูล Requirement Specification ดังนี้
+
+  \begin{enumerate}
+    \item สามารถเข้าใช้งานได้ผ่านการยืนยันตัวตนเป็น Administers เท่านั้น โดยสามารถมีได้ 1-5 คน
+    \item สามารถดูคลังสินค้า และแก้ไขข้อมูลสินค้าในแต่ละชนิดได้แบบเรียลไทม์
+    \item สามารถดูสถิติยอดขายสินค้าได้ทั้งแบบรายวัน รายเดือน และรายปี โดยแบ่งได้ 2 แบบ คือตามชนิดสินค้า และประเภทสินค้า
+    \item สามารถกดูประวัติการขายตามออเดอร์ของลูกค้าแต่ละคนได้ และดูข้อมูลของแต่ละออร์เดอร์ได้
+\end{enumerate}
+
+
 
  
+
+\section{การทดสอบการทำงานของซอร์ฟแวร์}
+การทดสอบการทำงานของระบบ สามารถแบ่งเป็นขั้นตอนดังนี้
+\subsection{Unit testing}
+การทดสอบความถูกต้องของการทำงานในแต่ละฟังก์ชันหลักของระบบแยกกัน โดยยังไม่รวมแต่ละ Component เข้าด้วยกัน ซึ่งได้แก่
+\begin{enumerate}
+  \item Classification system
+  \item Website dashboard
+  \item Mobile Application
+\end{enumerate}
+
+\subsection{Integration testing}
+การทดสอบการทำงานเมื่อรวมระบบย่อยทั้งหมดเข้าด้วยกัน โดยหลัก ๆ
+ จะทดสอบในเรื่อง API ว่ามีการรับส่งข้อมูลดุถูกต้องหรือไม่ และทำงานโดยรวมได้ถูกต้องทั้งหมดหรือไม่
+\subsection{System testing}
+การทดสอบระบบซึ่งแต่ละโมดูลข้างต้นจะถูกรวม และทดสอบเป็นกลุ่ม 
+เพื่อประเมินความสอดคล้องของระบบว่าทำงานได้ตามที่กำหนดไว้หรือไม่
+\subsection{Acceptance testing}
+การทดสอบระบบโดยดูภาพรวมของการทำงาน ว่ามีการตอบสนองความต้องการของผู้ใช้ทั้งในส่วนของฟังก์ชันการทำงาน 
+และประสิทธิภาพการทำงาน ว่าสอดคล้องกับลักษณะของความต้องการของซอฟต์แวร์หรือไม่ 
+โดยใช้การทดสอบแบบ Functional testing (Black box testing)
 \section{แผนภาพกระแสข้อมูล (Data Flow Diagram)}
 \begin{figure}[h]
   \begin{center}
