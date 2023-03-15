@@ -31,8 +31,8 @@
   \label{fig:Overall project structure}
   \end{figure}
 \section{เตรียมชุดข้อมูลฝึกสอน}
-ข้อมูลที่ใช้ในการ train mode โดยมีสินค้าประมาณ 100 ชนิด โดยจัดเก็บข้อมูลใช้กล้องมือถือ ในการถ่ายภาพในมุมต่างๆ
-ของสินค้าชนิดนั้นๆ ตามมุมต่างๆ จำนวนชนิดละ N รูป โดยจัดเก็บใน  และทำการดึงข้อมูลมา train ผ่าน Google Colab
+ข้อมูลที่ใช้ในการ train model ใช้รูปภาพจากสินค้าสินค้าจากห้อง 422  ทำการจัดเก็บข้อมูลรูปภาพ โดยใช้กล้องมือถือ ในการถ่ายภาพ ในมุมต่างๆ
+ของตัวสินค้า จำนวนชนิดละ 6 รูป โดยจัดเก็บใน Google Drive โดยทำการแยก รูปภาพตามหมวดหมู่ และทำการดึงข้อมูลมา train ผ่าน Google Colab
  โดยโครงสร้างการเก็บข้อมูลจะเป็นดังรูป
 
 \begin{center}
@@ -56,8 +56,23 @@
 
   \newpage
 \subsection{Model Architecture}
-โดยโมเดลในโครงงานนี้จะใช้ Xception pre-trained มาใช้ในการแยกคุณลักษณะเด่นของรูปภาพ  และสร้างโมเดลมาต่อท้ายเพื่อ 
+โดยโมเดลในโครงงานนี้จะใช้ Xception pre-trained ซึ่งเป็น Convolutional Neural Network ซึ่งมีความลึก 71 layers.
+เป็นโมเดลที่ผ่านการจากรูปภาพต่าง ๆ มากกว่าล้านรูปภาพจาก ImageNet database .
+
+
+\begin{center}
+  \includegraphics[scale=0.35]{pic/x.png}\cite{Xception}
+  \end{center}
+
+
+มาใช้ในการแยกคุณลักษณะเด่นของรูปภาพ  และสร้างโมเดลมาต่อท้ายเพื่อ 
 เรียนรู้ลักษณะเด่นจากที่ Xception ทำการแยกออกมาได้
+ 
+  
+% transfer learning - Xceptionโดย pre-train 'Xception' model 
+ 
+ 
+
 \begin{center}
   \includegraphics[scale=0.45]{pic/model.png}
 \end{center}
@@ -65,16 +80,6 @@
 โดยต่อท้ายด้วย fully connected node ที่เรียกว่า Dense layer ซึ่งทำหน้าที่เป็น classifier 
  โดยมี output layer ที่มีจำนวน node เท่ากับจำนวนสินค้า สำหรับการ classify ชนิดของ
   products จาก รูปภาพ
- 
-% \section{Product database}
-% Section 2 text.
-
- 
-
- 
-% \subsection{Transfer Learning}
-
-Subsection 1 text
 
 \section{classification products}
 จากรูปภาพใน 48 class ผ่านการ generate datasets จะมี dataset ทั้งหมด 4432 sample
