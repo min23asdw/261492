@@ -5,7 +5,7 @@
 \fi
 }
 
-ในบทนี ้ จะกล่าวถึงหลักการ,  การนําทฤษฎีที่เกี่ยวข้องมาประยุกต์ใช้  และการออกแบบของระบบ
+ในบทนี้ จะกล่าวถึงหลักการ,  การนําทฤษฎีที่เกี่ยวข้องมาประยุกต์ใช้  และการออกแบบของระบบ
 
 
 \makeatletter
@@ -21,29 +21,52 @@
 % \titlespacing*{\section}{0pt}{10ex}{0pt}
 \section{โครงสร้างของระบบ}
 % \ref{fig:Overall project structure}
+
+% app -> streaming -> ci classify -> results -> Display -> add to cart -> payment -> order
+Application โทรศัพท์มือถือ จะสามารถ classify สินค้าได้โดย application จะการถ่ายภาพของสินค้า และทำการ streaming ผ่าน WebRTC 
+ไปยัง server ที่มี Computational Intelligence ทำหน้าที่ classification ข้อมูลที่ได้รับเข้ามา  และตอบกับข้อมูลชนิดสินค้าและราคา กลับไปยัง application
+ผู้ใช้งาน application จะสามารถเพิ่มสินค้าที่ application ถ่าย ไปยังตะกร้าสินค้า และสามารถ กดจ่ายเงินซื้อสินค้าได้
+
+ โดยร้านค้าจะการ บันทึกประวัตืการซื้อขาย ของสินค้าภายในร้านทำให้สามารถจัดการ จำนวนของสินค้าภายในร้าน โครงสร้างของระบบ CapSnap จะเป็นดังรูป \ref{fig:Overall project structure}
+
+
+
 \begin{figure}[h]
   \begin{center}
   % \includegraphics{pic/webrtc.png}
-  \vspace{0.5cm}\includegraphics[scale=0.5]{pic/overall_2.png}
+  \vspace{0.5cm}\includegraphics[scale=0.3]{pic/overall_2.png}
   \end{center}
   
   \caption[Overall project structure]{Overall project structure}
   \label{fig:Overall project structure}
   \end{figure}
+
+  \newpage
+  \subsection{แผนภาพกระแสข้อมูล (Data Flow Diagram)}
+ จากขั้นตอนการทำงานของระบบ  และการ Communication ของ application และ server ของร้านค้า  
+ จะมีโครงสร้างของ Data Flow Diagram ดังรูป \ref{fig:Data Flow Diagram}
+\begin{figure}[h]
+  \begin{center}
+  % \includegraphics{pic/webrtc.png}
+  \includegraphics[scale=0.25]{pic/dataflow-lv0.png}
+  \end{center}
+  
+  \caption[Data Flow Diagram]{Data Flow Diagram}
+  \label{fig:Data Flow Diagram}
+  \end{figure}
+
+ 
+
 \section{เตรียมชุดข้อมูลฝึกสอน}
 ข้อมูลที่ใช้ในการ train model ใช้รูปภาพจากสินค้าสินค้าจากห้อง 422  ทำการจัดเก็บข้อมูลรูปภาพ โดยใช้กล้องมือถือ ในการถ่ายภาพ ในมุมต่างๆ
 ของตัวสินค้า จำนวนชนิดละ 6 รูป โดยจัดเก็บใน Google Drive โดยทำการแยก รูปภาพตามหมวดหมู่ และทำการดึงข้อมูลมา train ผ่าน Google Colab
- โดยโครงสร้างการเก็บข้อมูลจะเป็นดังรูป
-
-\begin{center}
-  \includegraphics[scale=0.35]{pic/st.png}
-\end{center}
+ 
 
 \section{การเพิ่ม traing data}
 โดยสินค้า 1 ชนิด ทำการถ่ายภาพ 6 รูป ในมุมที่แตกต่างกัน 
 โดยในแต่ละ 1 รูปภาพที่ถ่าย จะแปลงเป็นรูปภาพ RGB ขนาด 224x224 pixel
 และในแต่ละรูปเพื่อให้มี train dataset จำนวนมาก นำไปหมุนและกลับด้าน ด้วยมุม -20,-15,-10,-5,0,5,10,15,20 องศา
-โดย 1 รูปภาพผ่านการ generate datasets จะกลายเป็น 18 รูปภาพซึ่งมีความแตกต่างกันเล็กน้อย
+โดย 1 รูปภาพผ่านการ generate datasets จะกลายเป็น 18 รูปภาพซึ่งมีความแตกต่างกันเล็กน้อย ตามรูป \ref{fig:Dataset generator}
 \begin{figure}[h]
   \begin{center}
   % \includegraphics{pic/webrtc.png}
@@ -58,14 +81,15 @@
 \subsection{Model Architecture}
 โดยโมเดลในโครงงานนี้จะใช้ Xception pre-trained ซึ่งเป็น Convolutional Neural Network ซึ่งมีความลึก 71 layers.
 เป็นโมเดลที่ผ่านการจากรูปภาพต่าง ๆ มากกว่าล้านรูปภาพจาก ImageNet database .
+ซึ่งจะมีโครงสร้างดังรูป
 
 
 \begin{center}
-  \includegraphics[scale=0.35]{pic/x.png}\cite{Xception}
+  \includegraphics[scale=0.35]{pic/x_1.png}\cite{Xception}
   \end{center}
 
 
-มาใช้ในการแยกคุณลักษณะเด่นของรูปภาพ  และสร้างโมเดลมาต่อท้ายเพื่อ 
+โดยการนำ Xception model มาใช้ในการแยกคุณลักษณะเด่นของรูปภาพ  และ สร้างโมเดลมาต่อท้ายเพื่อ 
 เรียนรู้ลักษณะเด่นจากที่ Xception ทำการแยกออกมาได้
  
   
@@ -77,9 +101,16 @@
   \includegraphics[scale=0.45]{pic/model.png}
 \end{center}
   
-โดยต่อท้ายด้วย fully connected node ที่เรียกว่า Dense layer ซึ่งทำหน้าที่เป็น classifier 
- โดยมี output layer ที่มีจำนวน node เท่ากับจำนวนสินค้า สำหรับการ classify ชนิดของ
-  products จาก รูปภาพ
+ซึ่ง model ที่จะใช้ก็จะเป็น Xception model ที่รับ Input ขนาด 224 x 224 x 3 ตามขนาดรูปภาพ 224 pixel และตาม layer RGB
+
+โดย Xception เป็น model ตั้งต้นที่่ผ่าน pre train model จะทำหน้าที่เป็น feature exercitation ลักษณะเด่นของรูปภาพ
+โดย Xception จะถูก lock ค่าของ weight เอาไว้เพื่อไม่ไห้ค่าของ weight ที่ได้เรียนรู้ข้อมูลมาจาก ImageNet หายไป  ซึ่งมีทั้ง weight ทั้งหมด 20 ล้าน paramiter
+
+ และนำ layer มาต่อท้าย model ด้วย fully connected node ที่เรียกว่า Dense layer จำนวน 32 node และ 16 node และ 
+layer สุดท้าย ซึ่งมีขนาดเท่ากับจำนวน class ของสินค้า ซึ่งทำหน้าที่เป็น classifier
+โดย Dense layer ซึ่งเชื่อมกันแบบ fully connected ที่สามารถ เรียนรู้และปรับค่าของ weight ได้
+ในโครงสร้างทดสอบนี้จะมี weight ที่่สามารถเรียนรู้หรือ เปลี่ยนแปลงได้ 3 ล้าน paramiter
+   
 
 \section{classification products}
 จากรูปภาพใน 48 class ผ่านการ generate datasets จะมี dataset ทั้งหมด 4432 sample
@@ -87,6 +118,7 @@
 โดยจาก train 3546 แบ่ง 50\% สำหรับการ validation ในระหว่างการ train model
 
 \par ผลลัพธ์ จากการ train \& validation ด้วย 3546 sample เป็นจำนวน 40 Epoch
+
 ตัวอย่าง ผลการทดลองของการ validation ด้วย 3546 sample
 \begin{figure}[h]
   \begin{center}
@@ -206,16 +238,7 @@
 การทดสอบระบบโดยดูภาพรวมของการทำงาน ว่ามีการตอบสนองความต้องการของผู้ใช้ทั้งในส่วนของฟังก์ชันการทำงาน 
 และประสิทธิภาพการทำงาน ว่าสอดคล้องกับลักษณะของความต้องการของซอฟต์แวร์หรือไม่ 
 โดยใช้การทดสอบแบบ Functional testing (Black box testing)
-\section{แผนภาพกระแสข้อมูล (Data Flow Diagram)}
-\begin{figure}[h]
-  \begin{center}
-  % \includegraphics{pic/webrtc.png}
-  \includegraphics[scale=0.25]{pic/dataflow-lv0.png}
-  \end{center}
-  
-  \caption[Data Flow Diagram]{Data Flow Diagram}
-  \label{fig:Data Flow Diagram}
-  \end{figure}
+ 
   
 
 % \subsection{The Black Kitten}
