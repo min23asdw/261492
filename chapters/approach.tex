@@ -66,7 +66,7 @@ Application โทรศัพท์มือถือ จะสามารถ 
 \begin{figure}[h]
   \begin{center}
    
-  \includegraphics[scale=0.4]{pic/st.png}
+  \includegraphics[scale=0.4]{pic/model/st.png}
   \end{center}
   
   \caption[Google Drive]{Google Drive}
@@ -74,18 +74,29 @@ Application โทรศัพท์มือถือ จะสามารถ 
   \end{figure}
 
 \section{K-Fold Cross Validation}
-ข้อมูลที่ใช้ในการ train model ใช้รูปภาพจากสินค้าสินค้าจากห้อง 422  ทำการจัดเก็บข้อมูลรูปภาพ โดยใช้กล้องมือถือ ในการถ่ายภาพ ในมุมต่างๆ
-ของตัวสินค้า จำนวน class ละ 8 รูป โดยโมเดลในโครงงานนี้จะใช้สินค้าทั้งหมด 51 class , 1 class สำหรับพื้นหลัง (background class)
-จัดเก็บใน Google Drive โดยทำการแยก รูปภาพตามหมวดหมู่ และทำการดึงข้อมูลมา train ผ่าน Google Colab
-% \begin{figure}[h]
-%   \begin{center}
+
+
+ ซึ่งในโครงงานนี้ ได้ทำการแบ่ง dataset เป็น ทั้งหมด 4 fold ดังรูป
+
+\begin{center}
+  \includegraphics[scale=0.3]{pic/model/CrossValidation.png}\cite{CrossValidation}
+  \end{center}
+
+เพื่อตรวจสอบว่า model ที่เราทำการสร้าง ไม่ว่าจะเจอ dataset ที่ข้อมูลแตกต่างกันในแต่ละ fold ก็จะได้ accuracy ที่มีความใกล้เคียงในแต่ละ fold โดยที่ไม่แม่นยำแค่บาง dataset ซึ่งเป็นการ bias ต่อ dataset
+ 
+\begin{figure}[h]
+  \begin{center}
    
-%   \includegraphics[scale=0.4]{pic/lay_genmore.png}
-%   \end{center}
+  \includegraphics[scale=0.4]{pic/model/fold_aug.png}
+  \end{center}
   
-%   \caption[Dataset generator]{Dataset generator}
-%   \label{fig:Dataset generator}
-%   \end{figure}
+  \caption[Dataset]{Dataset}
+  \label{fig:Dataset}
+  \end{figure}
+
+  \newpage
+
+
 
 \section{Data augmentation การเพิ่ม traing data}
 เพื่อให้มี train dataset ในจำนวนมาก  
@@ -96,14 +107,17 @@ Application โทรศัพท์มือถือ จะสามารถ 
 \begin{figure}[h]
   \begin{center}
    
-  \includegraphics[scale=0.4]{pic/lay_genmore.png}
+  \includegraphics[scale=0.4]{pic/model/lay_genmore.png}
   \end{center}
   
   \caption[Dataset generator]{Dataset generator}
   \label{fig:Dataset generator}
   \end{figure}
 
-  \newpage
+
+
+
+\newpage
 \subsection{Model Architecture}
 โดยโมเดลในโครงงานนี้จะใช้ Xception pre-trained ซึ่งเป็น Convolutional Neural Network ซึ่งมีความลึก 71 layers.
 เป็นโมเดลที่ผ่านการจากรูปภาพต่าง ๆ มากกว่าล้านรูปภาพจาก ImageNet database .
@@ -111,7 +125,7 @@ Application โทรศัพท์มือถือ จะสามารถ 
 
 
 \begin{center}
-  \includegraphics[scale=0.35]{pic/x_1.png}\cite{Xception}
+  \includegraphics[scale=0.35]{pic/model/x_1.png}\cite{Xception}
   \end{center}
 
 
@@ -124,7 +138,7 @@ Application โทรศัพท์มือถือ จะสามารถ 
  
 
 \begin{center}
-  \includegraphics[scale=0.45]{pic/model.png}
+  \includegraphics[scale=0.45]{pic/model/model.png}
 \end{center}
   
 ซึ่ง model ที่จะใช้ก็จะเป็น Xception model ที่รับ Input ขนาด 224 x 224 x 3 ตามขนาดรูปภาพ 224 pixel และตาม layer RGB
@@ -149,7 +163,7 @@ layer สุดท้าย ซึ่งมีขนาดเท่ากับ�
 \begin{figure}[h]
   \begin{center}
   
-  \includegraphics[scale=0.4]{pic/train_fold.png}
+  \includegraphics[scale=0.4]{pic/model/train_fold.png}
   \end{center}
   
   \caption[Train fold]{Train fold}
@@ -173,7 +187,7 @@ layer สุดท้าย ซึ่งมีขนาดเท่ากับ�
   \begin{figure}[h]
     \begin{center}
     
-    \includegraphics[scale=0.12]{pic/blind_pic_4_ccm.png}
+    \includegraphics[scale=0.12]{pic/model/blind_pic_4_ccm.png}
     \end{center}
     
     \caption[Confusion matrix]{Confusion matrix}
