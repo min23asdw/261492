@@ -1,63 +1,63 @@
 \chapter{\ifenglish Background Knowledge and Theory\else ทฤษฎีที่เกี่ยวข้อง\fi}
 
 % การทำโครงงาน เริ่มต้นด้วยการศึกษาค้นคว้า ทฤษฎีที่เกี่ยวข้อง หรือ งานวิจัย/โครงงาน ที่เคยมีผู้นำเสนอไว้แล้ว ซึ่งเนื้อหาในบทนี้ก็จะเกี่ยวกับการอธิบายถึงสิ่งที่เกี่ยวข้องกับโครงงาน เพื่อให้ผู้อ่านเข้าใจเนื้อหาในบทถัดๆ ไปได้ง่ายขึ้น
-\par โครงงานนี้ได้นำองค์ความรู้ในด้านของ Computational Intelligence และ การ streaming      
-รูปภาพจาก application ไปยัง backend ผ่าน WebSocket   เพื่อให้ backend  
-ที่เป็น Computational Intelligence ทำการ classification products  
-  
-  
-\section{WebSocket for Streaming image \cite{WebSocket}}
-\par WebSocket (computer communications protocol)  
- \ref{fig:WebSocket structure}
- 
- 
-\begin{figure}[h]
-\begin{center}
- 
-\includegraphics[scale=0.5]{pic/websocket-works-2.png}
-\end{center}
+\par โครงงานนี้ได้นำองค์ความรู้ในด้านของ Computational Intelligence และ การ streaming
+รูปภาพจาก application ไปยัง backend ผ่าน WebSocket   เพื่อให้ backend
+ที่เป็น Computational Intelligence ทำการ classification products
 
-\caption[WebSocket structure]{WebSocket structure}
-\label{fig:WebSocket structure}
+
+\section{WebSocket for Streaming image \cite{WebSocket}}
+\par WebSocket (computer communications protocol)
+\ref{fig:WebSocket structure}
+
+
+\begin{figure}[h]
+  \begin{center}
+
+    \includegraphics[scale=0.5]{pic/websocket-works-2.png}
+  \end{center}
+
+  \caption[WebSocket structure]{WebSocket structure}
+  \label{fig:WebSocket structure}
 \end{figure}
 
 
 
-\section{Artificial neural networks \cite{ANN}} 
+\section{Artificial neural networks \cite{ANN}}
 % Deep Learning is the branch of Machine Learning based on Deep Neural Networks (DNNs), 
 % meaning neural networks with at the very least 3 or 4 layers (including the input and output layers). 
 \par เป็นแขนงหนึ่งของ Computational Intelligence ซึ่งได้รับแรงบรรดาลใจมาจากการทำงานของสมองของมนุษย์
-ซึ่งประกอบด้วยหน่วยเล็กๆ เรียกว่า cell Neuron แต่ละ Neuron ก็จะเชื่อมต่อโยงใยกันด้วยเส้นประสาทเรียกว่า ไซแนปส์ (Synapse) เพื่อส่งสัญญาณไฟฟ้า ที่เกิดจากสิ่งเร้าต่างๆ ว่าจะตอบสนองต่อสิ่งเร้านั้นอย่างไร 
+ซึ่งประกอบด้วยหน่วยเล็กๆ เรียกว่า cell Neuron แต่ละ Neuron ก็จะเชื่อมต่อโยงใยกันด้วยเส้นประสาทเรียกว่า ไซแนปส์ (Synapse) เพื่อส่งสัญญาณไฟฟ้า ที่เกิดจากสิ่งเร้าต่างๆ ว่าจะตอบสนองต่อสิ่งเร้านั้นอย่างไร
 โดยแต่ละ Neuron จะได้รับ Input หลาย ๆ อัน จากกิ่งก้านสาขาของ Dendrite แล้วนำมาประมวลผล ออกมาเป็น 1 Output ออกไปที่ Axon เพื่อส่งต่อไปให้ Dendrite ของ Neuron อื่น ๆ ใช้เป็น Input ต่อไป
 
 เมื่อมนุษย์เติบโดขึ้น หาก Neuron ไหนตอบสนองต่อสิ่งเร้าประเภทไหนได้ดี ก็จะสามารถส่งสัญญาณไฟฟ้าได้แรง มากกว่า Neuron อื่นๆ
 เมื่อ Neuron หลายๆอันต่อกันหลายๆ layer ก็จะกลายเป็น Neuron network ของมนุษย์
 
-โดยในทาง  Computational Intelligence จะใช้ node เป็นตัวแทนของ Neuron โดยจะเรียงเป็นชั้นๆ (layer) 
+โดยในทาง  Computational Intelligence จะใช้ node เป็นตัวแทนของ Neuron โดยจะเรียงเป็นชั้นๆ (layer)
 โดยสัญญาณที่ส่งออกจากแต่ละ node จะมี weight ที่กำหนดความแรงของสัญญาณนั้นๆ เมื่อมีหลายๆ node และต่อกันหลายๆ layers
 ก็จะกลายเป็น neural network ขนาดใหญ่ เรียกว่า deep learning ซึ่งเลียนแบบการการทำงานของสมองมนุษย์
-ทำให้  computers สามารถ process ข้อมูลในลักษณะเดียวกับที่ สมองของมนุษย์ทำการประมวณผลข้อมูล 
+ทำให้  computers สามารถ process ข้อมูลในลักษณะเดียวกับที่ สมองของมนุษย์ทำการประมวณผลข้อมูล
 
 \subsection{Multilayer perceptron \cite{Mlp}}
 เป็นส่วนพื้นฐานของ neural network เป็นการ ที่ node ในแต่ละ layer เชื่อมต่อกับ ทุก node ของ layer+1 (fully connected)
-โดยทุกเส้นการเชื่อมต่อของ $node_i$  กับ $node_j$ จะมี weight $w_{ji}$  ซึ่งเป็นความแรงของสัญญาณอยู่ 
+โดยทุกเส้นการเชื่อมต่อของ $node_i$  กับ $node_j$ จะมี weight $w_{ji}$  ซึ่งเป็นความแรงของสัญญาณอยู่
 \\ โดยจะมี Input layer สำหรับรับข้อมูล (สิ่งเร้า) hidden layer ในการตัดสินใจ และ output layer ในการเลือกการกระทำกับสิ่งเร้านั้นๆ
-\begin{figure}[h] 
-  \begin{center} 
-   
-  \includegraphics[scale=0.3]{pic/model/mlp_1.png}\cite{NeuralNetwork}
-  % \cite{NeuralNetwork}
+\begin{figure}[h]
+  \begin{center}
+
+    \includegraphics[scale=0.3]{pic/model/mlp_1.png}\cite{NeuralNetwork}
+    % \cite{NeuralNetwork}
   \end{center}
-  \caption[Multilayer perceptron]{Multilayer perceptron} 
+  \caption[Multilayer perceptron]{Multilayer perceptron}
   \label{fig:Multilayer perceptron}
-  \end{figure}
+\end{figure}
 
 \subsection{Multilayer perceptron - Feed forward \cite{Feed}}
 
 
 โดยในแต่ละ node ที่ไม่ใช่ Input layer จะรับค่าผลรวมจาก node ก่อนหน้า เป็นผลรวมจากทุก Input (ทุก Dendrite) ของ node นั้นๆ
 \newline
-โดยสมการผลรวม Input ของ $node_j$ 
+โดยสมการผลรวม Input ของ $node_j$
 \begin{equation} node_j  =  v_j = \sum(\forall w_{j_i})+biase \end{equation}
 
 Activation function \cite{Activation} คือ ฟังก์ชันที่รับ ผลรวมจากทุก Input ( $v_j $)  แล้วคำนวณว่าจะส่งต่อเป็น Output เท่าไร
@@ -67,19 +67,19 @@ Activation function \cite{Activation} คือ ฟังก์ชันที�
   \item ReLU activation: ${\displaystyle \phi (\mathbf {v} )=\max(0,a+\mathbf {v} '\mathbf {b} )}$,
   \item Heaviside activation: ${\displaystyle \phi (\mathbf {v} )=1_{a+\mathbf {v} '\mathbf {b} >0}}$,
   \item Logistic activation: ${\displaystyle \phi (\mathbf {v} )=(1+\exp(-a-\mathbf {v} '\mathbf {b} ))^{-1}}$.
-\end{itemize} 
+\end{itemize}
 %  Linear activation:  ${\displaystyle \phi (\mathbf {v} )=a+\mathbf {v} '\mathbf {b} }$ ,
 %  ReLU activation: ${\displaystyle \phi (\mathbf {v} )=\max(0,a+\mathbf {v} '\mathbf {b} )}$,
 %  Heaviside activation: ${\displaystyle \phi (\mathbf {v} )=1_{a+\mathbf {v} '\mathbf {b} >0}}$,
 %  Logistic activation: ${\displaystyle \phi (\mathbf {v} )=(1+\exp(-a-\mathbf {v} '\mathbf {b} ))^{-1}}$.
 
-โดยในทุกๆ $node_j$ จะมี Activation function สำหรับคำนวณค่า output ที่จะส่งต่อไปยัง layer ถัดไป  
+โดยในทุกๆ $node_j$ จะมี Activation function สำหรับคำนวณค่า output ที่จะส่งต่อไปยัง layer ถัดไป
 % \textrm{and}
 
 \begin{equation} output node_j =  Y_j =  y(v_i)  \end{equation}
 ตัวอย่าง ReLU Activation function ค่าที่ส่งออกไปยัง layer ถัดไปจะเป็น
-\begin{equation} ~~ y(v_i) = \max(0,v_i)   
-  \end{equation}
+\begin{equation} ~~ y(v_i) = \max(0,v_i)
+\end{equation}
 %  \newline โดยที่  $ ~~ y(v_i) = \tanh(v_i)   $      สำหรับ  Hyperbolic tangent Activation function
 %  \newline โดยที่   $ ~~ y(v_i) = (1+e^{-v_i})^{-1}$ สำหรับ  Sigmoid Activation function
 %  \newline โดยที่   $ ~~ y(v_i) = \max(0,v_i)$       สำหรับ  ReLU Activation function
@@ -88,55 +88,55 @@ Activation function \cite{Activation} คือ ฟังก์ชันที�
 % คือวิธีการเรียนรู้แบบอัตโนมัติด้วยการ เลียนแบบการทำงานของโครงข่ายประสาทของมนุษย์ (Neurons) โดยนำระบบโครงข่ายประสาท (Neural Network) มาซ้อนกัน หลายชั้น (Layer) และทำการเรียนรู้ข้อมูลตัวอย่าง ซึ่งข้อมูล ดังกล่าวจะถูกนำไปใช้ในการตรวจจับรูปแบบ (Pattern) หรือจัด หมวดหมู่ข้อมูล (Classify the Data)
 \subsection{Classification}
 จาก Input layer ข้อมูลจะถูกส่งต่อไปยัง Layer ถัดๆไป เรียกว่า Feed forward และเมื่อถึง
-Layer สุดท้ายของ Neural Network เรียกว่า Output layer โดยส่วนใหญ่ใน output layer นี้จะมีจำนวนของ node เท่ากับจำนวนของ class ของข้อมูลที่จะทำการ classification 
+Layer สุดท้ายของ Neural Network เรียกว่า Output layer โดยส่วนใหญ่ใน output layer นี้จะมีจำนวนของ node เท่ากับจำนวนของ class ของข้อมูลที่จะทำการ classification
 โดยแต่ละ node ใน Output layer จะเป็นตัวแทนของ class ซึ่ง หาก node ใดให้ค่า Output node เยอะที่สุด Input data ก็ถูก classify เป็น class ของ node นั้นๆ
 
 
 \subsection{Training}
-คือการฝึกสอนโดยใช้ dataset เปลี่ยน weight ในแต่ละเส้นของ MLP เพื่อให้ตอบสนองต่อ Input ให้ใกล้เครียงกับสิ่งที่ควรจะเป็นมากขึ้น 
+คือการฝึกสอนโดยใช้ dataset เปลี่ยน weight ในแต่ละเส้นของ MLP เพื่อให้ตอบสนองต่อ Input ให้ใกล้เครียงกับสิ่งที่ควรจะเป็นมากขึ้น
 โดยหนึ่งในวิธีการเปลี่ยน weight คือ backpropagation
- 
+
 
 โดยค่า error ที่ได้มาจาก output layer กับ ค่าที่ควรได้จาก Input ที่ใส่เข้าไป เพื่อเปลี่ยน weight ให้ค่า error มีค่าน้อยลงกว่าเดิม
 \begin{equation} output node_j =  Y_j =  y(v_i)  \end{equation}
 
- สามารถคำนวณหาค่า error ในแต่ละ node ของ output layer ได้โดย
- \begin{equation}  e_j(n)=d_j(n)-y_j(n) 
- \end{equation}
- where $d_{j}(n)$  is the desired target value , and $y_{j}(n)$   value produced by the perceptron at $node_j$
+สามารถคำนวณหาค่า error ในแต่ละ node ของ output layer ได้โดย
+\begin{equation}  e_j(n)=d_j(n)-y_j(n)
+\end{equation}
+where $d_{j}(n)$  is the desired target value , and $y_{j}(n)$   value produced by the perceptron at $node_j$
 
 
 %  หรือทำให้ output node ใน layer output ที่เป็น class ของ input นั้นๆ มีค่าเยอะที่สุด
- 
-\begin{equation} 
-{\displaystyle {\mathcal {E}}(n)={\frac {1}{2}}\sum _{{\text{output node }}j}e_{j}^{2}(n)}.
-\end{equation} 
-และใช้  gradient descent ในการเปลี่ยน weight ในแต่ละเส้น
-\begin{equation} 
-\Delta w_{ji} (n) = -\eta\frac{\partial\mathcal{E}(n)}{\partial v_j(n)} y_i(n)
-\end{equation} 
 
-
- 
- 
-\section{Convolutional neural network}
-เป็น Computational intelligence ที่ออกแบบมาในงานด้านรูปภาพ 
-ใช้การดำเนินการที่เรียกว่า "convolution"  (สัญลักษณ์ *) เป็นการดำเนินการทางคณิตศาสตร์ ระหว่างสองฟังก์ชัน f * g เพื่อดูการเปลี่ยนแปลงของฟังก์ชัน (f) เมื่อมีฟังก์ชัน (g) เข้ามา 
-ใช้ในการเพื่อประมวลผลข้อมูลภาพ  
 \begin{equation}
-   {\displaystyle (f*g)(t):=\int _{-\infty }^{\infty }f(\tau )g(t-\tau )\,d\tau .}
-\end{equation} 
- 
+  {\displaystyle {\mathcal {E}}(n)={\frac {1}{2}}\sum _{{\text{output node }}j}e_{j}^{2}(n)}.
+\end{equation}
+และใช้  gradient descent ในการเปลี่ยน weight ในแต่ละเส้น
+\begin{equation}
+  \Delta w_{ji} (n) = -\eta\frac{\partial\mathcal{E}(n)}{\partial v_j(n)} y_i(n)
+\end{equation}
+
+
+
+
+\section{Convolutional neural network}
+เป็น Computational intelligence ที่ออกแบบมาในงานด้านรูปภาพ
+ใช้การดำเนินการที่เรียกว่า "convolution"  (สัญลักษณ์ *) เป็นการดำเนินการทางคณิตศาสตร์ ระหว่างสองฟังก์ชัน f * g เพื่อดูการเปลี่ยนแปลงของฟังก์ชัน (f) เมื่อมีฟังก์ชัน (g) เข้ามา
+ใช้ในการเพื่อประมวลผลข้อมูลภาพ
+\begin{equation}
+  {\displaystyle (f*g)(t):=\int _{-\infty }^{\infty }f(\tau )g(t-\tau )\,d\tau .}
+\end{equation}
+
 โดยจะแบ่งส่วนของภาพเป็นส่วนย่อยๆ ไปทั่วทั้งรูปภาพ แล้วนำไป convolution กับ  "filters" หรือที่เรียกว่า "kernels" เพื่อหา patterns ของรูปภาพ ที่เรียกว่า feature map
 \begin{figure}[h]
   \begin{center}
-   
-  \includegraphics[scale=0.35]{pic/model/cnn_1.png}
+
+    \includegraphics[scale=0.35]{pic/model/cnn_1.png}
   \end{center}
   %  https://anhreynolds.com/blogs/cnn.html
   \caption[Convolution]{Convolution}
   \label{fig:Convolution }
-  \end{figure}
+\end{figure}
 
 
 CNNs ต่างจาก Neural Networks อื่นๆ ตรงที่  shared-weight ร่วมกัน ซึ่งทำให้มีความสามารถในการแยกแยะ patterns ได้ดี
@@ -145,78 +145,78 @@ CNNs ต่างจาก Neural Networks อื่นๆ ตรงที่  s
 หากเขียนในโครงสร้าง Neural Network จะได้ดังรูป \ref{fig:Convolutional Neural Network}
 \begin{figure}[h]
   \begin{center}
- 
-  \includegraphics[scale=0.35]{pic/model/cnn_nn_1.png}\cite{CNN_mlp}
+
+    \includegraphics[scale=0.35]{pic/model/cnn_nn_1.png}\cite{CNN_mlp}
   \end{center}
-% https://medium.com/@hadee2531earvesdrop/convolutional-neural-network-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3-42c45f7ec16b
+  % https://medium.com/@hadee2531earvesdrop/convolutional-neural-network-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3-42c45f7ec16b
 
   \caption[Convolutional Neural Network]{Convolutional Neural Network}
   \label{fig:Convolutional Neural Network}
-  \end{figure}
+\end{figure}
 
-  
-  
-  \newpage
+
+
+\newpage
 
 \section{Transfer learning}
 
 
 % \section{Transfer Learning}
- 
+
 % Section 2 text.
 
 % \section{Transfer Learning}
 เป็นเทคนิคที่นำโมเดล ที่ผ่านการฝึกฝนจนแก้ปัญหา ในงานอื่นๆที่มีความคล้ายคลึงกัน
 นำมาเป็นโมเดลตั้งต้น สำหรับโมเดลในการแก้ปัญหาใหม่ๆ
 ตัวอย่างเช่น โมเดลที่ได้รับการฝึกฝนให้จดจำวัตถุในภาพสามารถใช้
-เพื่อระบุวัตถุที่คล้ายกันในภาพต่างๆ ได้ 
+เพื่อระบุวัตถุที่คล้ายกันในภาพต่างๆ ได้
 แม้ว่าภาพใหม่จะมีสภาพแสงหรือพื้นหลังต่างกันก็ตาม
- กุญแจสำคัญคือการระบุคุณสมบัติทั่วไปหรือการเป็นตัวแทนที่ใช้ร่วมกันระหว่างโดเมนต้นทางและโดเมนเป้าหมาย
- วิธี Transfer Learning ที่ได้รับความนิยมมากที่สุดวิธีหนึ่งคือ fine-tuning 
+กุญแจสำคัญคือการระบุคุณสมบัติทั่วไปหรือการเป็นตัวแทนที่ใช้ร่วมกันระหว่างโดเมนต้นทางและโดเมนเป้าหมาย
+วิธี Transfer Learning ที่ได้รับความนิยมมากที่สุดวิธีหนึ่งคือ fine-tuning
 คือการใช้โมเดลที่ผ่านการ  pre-trained  มาแล้ว นำมา train ต่อบน ชุดข้อมูลใหม่
 และใช้ learning rate น้อยๆ เพื่อป้องกัน weight ที่เคยผ่านการฝึกสอนจนมีความแม่นยำเปลี่ยนแปลงไปมาก จนไม่มีความแม่นยำ
 อีกวิธีหนึ่งคือ feature extraction ซึ่งเกี่ยวข้องกับการใช้ โมเดลที่ผ่านการ  pre-trained  เป็นตัวแยกคุณลักษณะของ ข้อมูล และสร้างโมเดลใหม่เพื่อ train จากคุณลักษณะเหล่านี้ที่โมเดลตั้งต้นแบ่งแยกออกมาได้
- 
+
 % \subsection{Transfer Learning}
 \begin{figure}[h]
   \begin{center}
- 
-  \includegraphics[scale=0.45]{pic/model/The-architecture-transfer-learning.png}\cite{Transfer}
+
+    \includegraphics[scale=0.45]{pic/model/The-architecture-transfer-learning.png}\cite{Transfer}
   \end{center}
-  
+
   \caption[The concept of transfer learning]{The concept of transfer learning}
   \label{fig:The concept of transfer learning}
-  \end{figure}
+\end{figure}
 
-  % The definition of transfer learning is given in terms of domains and tasks.
-  Transfer learning สามารถอธิบายได้ในรูปของ domains และ tasks. 
+% The definition of transfer learning is given in terms of domains and tasks.
+Transfer learning สามารถอธิบายได้ในรูปของ domains และ tasks.
 
-  % A domain ${\mathcal {D}}$ consists of: a feature space ${\mathcal {X}}$ and a marginal probability distribution P(X),
-  โดย domain ${\mathcal {D}}$ ประกอบไปด้วย: feature space ${\mathcal {X}}$ และ marginal probability distribution P(X),
+% A domain ${\mathcal {D}}$ consists of: a feature space ${\mathcal {X}}$ and a marginal probability distribution P(X),
+โดย domain ${\mathcal {D}}$ ประกอบไปด้วย: feature space ${\mathcal {X}}$ และ marginal probability distribution P(X),
 %  where ${\displaystyle X=\{x_{1},...,x_{n}\}\in {\mathcal {X}}}$.  
-ซึ่ง ${\displaystyle X=\{x_{1},...,x_{n}\}\in {\mathcal {X}}}$.  
+ซึ่ง ${\displaystyle X=\{x_{1},...,x_{n}\}\in {\mathcal {X}}}$.
 
 % Given a specific domain, ${\displaystyle {\mathcal {D}}=\{{\mathcal {X}},P(X)\}}$,
- จะได้ว่าหากมี domain ใด, ${\displaystyle {\mathcal {D}}=\{{\mathcal {X}},P(X)\}}$,
+จะได้ว่าหากมี domain ใด, ${\displaystyle {\mathcal {D}}=\{{\mathcal {X}},P(X)\}}$,
 % a task consists of two components: a label space ${\mathcal {Y}}$  and an objective predictive function
-หน้าที่ของ domain นั้นจะมี 2 ส่วนคือการ 
- label space ${\mathcal {Y}}$  และเป็น objective predictive function
+หน้าที่ของ domain นั้นจะมี 2 ส่วนคือการ
+label space ${\mathcal {Y}}$  และเป็น objective predictive function
 % ${\displaystyle f:{\mathcal {X}}\rightarrow {\mathcal {Y}}}$. 
-${\displaystyle f:{\mathcal {X}}\rightarrow {\mathcal {Y}}}$. 
+${\displaystyle f:{\mathcal {X}}\rightarrow {\mathcal {Y}}}$.
 % The function ${\displaystyle f}$  is used to predict the corresponding label    ${\displaystyle f(x)}$   % of a new instance  ${\displaystyle x}$ . 
 
- ซึ่งฟังชั่น ${\displaystyle f}$  จะถูกใช้ในการ ทำนาย ข้อมูลที่มีความสอดคล้องกันของ  ${\displaystyle f(x)}$   ของข้อมูลใหม่  ${\displaystyle x}$ .   
+ซึ่งฟังชั่น ${\displaystyle f}$  จะถูกใช้ในการ ทำนาย ข้อมูลที่มีความสอดคล้องกันของ  ${\displaystyle f(x)}$   ของข้อมูลใหม่  ${\displaystyle x}$ .
 %  This task, denoted by ${\displaystyle {\mathcal {T}}=\{{\mathcal {Y}},f(x)\}}$,
 โดยหน้าที่ของ domain ,โดยเขียนแทนด้วยด้วยสัญลักษณ์   ${\displaystyle {\mathcal {T}}=\{{\mathcal {Y}},f(x)\}}$,
 % is learned from the training data consisting of pairs ${\displaystyle \{x_{i},y_{i}\}}$, where ${\displaystyle x_{i}\in {X}}$ and ${\displaystyle y_{i}\in {Y}}$.
 ทำการเรียนรู้จากชุดข้อมูลฝึกสอนที่เป็นคู่อันดับ ${\displaystyle \{x_{i},y_{i}\}}$, โดยที่ ${\displaystyle x_{i}\in {X}}$ และ ${\displaystyle y_{i}\in {Y}}$.
 
 %  Given a source domain ${\displaystyle {\mathcal {D}}_{S}}$ and learning task ${\displaystyle {\mathcal {T}}_{S}}$,
- หากมี domain ตั้งต้น${\displaystyle {\mathcal {D}}_{S}}$ และ learning task ตั้งต้น${\displaystyle {\mathcal {T}}_{S}}$,
+หากมี domain ตั้งต้น${\displaystyle {\mathcal {D}}_{S}}$ และ learning task ตั้งต้น${\displaystyle {\mathcal {T}}_{S}}$,
 % a targer domain  ${\mathcal{D}_{T}}$ and learning task ${\mathcal{T}_{T}}$
 target domain  ${\mathcal{D}_{T}}$ และ learning task เป้าหมาย${\mathcal{T}_{T}}$
 % where ${\displaystyle {\mathcal {D}}_{S}\neq {\mathcal {D}}_{T}}$, or ${\displaystyle {\mathcal {T}}_{S}\neq {\mathcal {T}}_{T}}$, 
-โดยที่ ${\displaystyle {\mathcal {D}}_{S}\neq {\mathcal {D}}_{T}}$, หรือ ${\displaystyle {\mathcal {T}}_{S}\neq {\mathcal {T}}_{T}}$, 
+โดยที่ ${\displaystyle {\mathcal {D}}_{S}\neq {\mathcal {D}}_{T}}$, หรือ ${\displaystyle {\mathcal {T}}_{S}\neq {\mathcal {T}}_{T}}$,
 
 % transfer learning aims to help improve the learning of the target predictive function   ${\displaystyle f_{T}(\cdot )}$ in ${\mathcal{D}_{T}}$
 Transfer learning  นั้นช่วยในการพัฒนาการเรียนรู้ของ target predictive function ที่ต้องการ ${\displaystyle f_{T}(\cdot )}$ ใน ${\mathcal{D}_{T}}$
@@ -263,26 +263,26 @@ Transfer learning  นั้นช่วยในการพัฒนากา�
 %   culpa qui officia deserunt mollit anim id est laborum.}\par}
 
 % \begin{figure}
-  % \centering
+% \centering
 
-  % \fbox{
-    %  \parbox{.6\textwidth}{\loremipsum}
-  % }
+% \fbox{
+%  \parbox{.6\textwidth}{\loremipsum}
+% }
 
-  % To include an image in the figure, say myimage.pdf, you could use
-  % the following code. Look up the documentation for the package
-  % graphicx for more information.
-  % \includegraphics[width=\textwidth]{myimage}
+% To include an image in the figure, say myimage.pdf, you could use
+% the following code. Look up the documentation for the package
+% graphicx for more information.
+% \includegraphics[width=\textwidth]{myimage}
 
-  % \caption[Sample figure]{This figure is a sample containing \gls{lorem ipsum},
-  % showing you how you can include figures and glossary in your report.
-  % You can specify a shorter caption that will appear in the List of Figures.}
-  % \label{fig:sample-figure}
+% \caption[Sample figure]{This figure is a sample containing \gls{lorem ipsum},
+% showing you how you can include figures and glossary in your report.
+% You can specify a shorter caption that will appear in the List of Figures.}
+% \label{fig:sample-figure}
 % \end{figure}
 
 % Using \verb.\label. and \verb.\ref. commands allows us to refer to
 % figures easily. If we can refer to Figures
- 
+
 % source code, then we will not need to update the code that refers to it
 % even if the placement or ordering of the figures changes.
 
