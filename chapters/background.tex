@@ -2,24 +2,23 @@
 
 % การทำโครงงาน เริ่มต้นด้วยการศึกษาค้นคว้า ทฤษฎีที่เกี่ยวข้อง หรือ งานวิจัย/โครงงาน ที่เคยมีผู้นำเสนอไว้แล้ว ซึ่งเนื้อหาในบทนี้ก็จะเกี่ยวกับการอธิบายถึงสิ่งที่เกี่ยวข้องกับโครงงาน เพื่อให้ผู้อ่านเข้าใจเนื้อหาในบทถัดๆ ไปได้ง่ายขึ้น
 \par โครงงานนี้ได้นำองค์ความรู้ในด้านของ Computational Intelligence และ การ streaming แบบ Peer-to-peer   
-ของรูปภาพจาก application ไปยัง backend ผ่าน WebRTC (Web Real Time Communications) เพื่อให้ backend 
+ของรูปภาพจาก application ไปยัง backend ผ่าน WebSocket (Web Real Time Communications) เพื่อให้ backend 
 ที่เป็น Computational Intelligence ทำการ classification products  
   
   
-\section{WebRTC for Streaming image \cite{WebRTC}}
-\par WebRTC (Web Real-Time Communication) เป็น open-source  ที่ให้บริการ  web browsers
- และ mobile applications ด้วยการสื่อสารแบบเรียลไทม์ (RTC) ผ่าน (API)  
- ทำให้การ Communication ด้วยเสียงและวิดีโอได้ผ่าน  Peer-to-peer   โดย โครงสร้างของ WebRTC เป็นดังรูป \ref{fig:webrtc structure}
+\section{WebSocket for Streaming image \cite{WebSocket}}
+\par WebSocket (computer communications protocol)  
+ \ref{fig:WebSocket structure}
  
  
 \begin{figure}[h]
 \begin{center}
-% \includegraphics{pic/webrtc.png}
-\includegraphics[scale=0.5]{pic/webrtc.png}
+ 
+\includegraphics[scale=0.5]{pic/websocket-works-2.png}
 \end{center}
 
-\caption[webrtc structure]{webrtc structure}
-\label{fig:webrtc structure}
+\caption[WebSocket structure]{WebSocket structure}
+\label{fig:WebSocket structure}
 \end{figure}
 
 
@@ -45,7 +44,7 @@
 \\ โดยจะมี Input layer สำหรับรับข้อมูล (สิ่งเร้า) hidden layer ในการตัดสินใจ และ output layer ในการเลือกการกระทำกับสิ่งเร้านั้นๆ
 \begin{figure}[h] 
   \begin{center} 
-  % \includegraphics{pic/webrtc.png}
+   
   \includegraphics[scale=0.3]{pic/mlp_1.png}\cite{NeuralNetwork}
   % \cite{NeuralNetwork}
   \end{center}
@@ -131,7 +130,7 @@ Layer สุดท้ายของ Neural Network เรียกว่า Out
 โดยจะแบ่งส่วนของภาพเป็นส่วนย่อยๆ ไปทั่วทั้งรูปภาพ แล้วนำไป convolution กับ  "filters" หรือที่เรียกว่า "kernels" เพื่อหา patterns ของรูปภาพ ที่เรียกว่า feature map
 \begin{figure}[h]
   \begin{center}
-  % \includegraphics{pic/webrtc.png}
+   
   \includegraphics[scale=0.35]{pic/cnn_1.png}
   \end{center}
   %  https://anhreynolds.com/blogs/cnn.html
@@ -146,7 +145,7 @@ CNNs ต่างจาก Neural Networks อื่นๆ ตรงที่  s
 หากเขียนในโครงสร้าง Neural Network จะได้ดังรูป \ref{fig:Convolutional Neural Network}
 \begin{figure}[h]
   \begin{center}
-  % \includegraphics{pic/webrtc.png}
+ 
   \includegraphics[scale=0.35]{pic/cnn_nn_1.png}\cite{CNN_mlp}
   \end{center}
 % https://medium.com/@hadee2531earvesdrop/convolutional-neural-network-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3-42c45f7ec16b
@@ -181,7 +180,7 @@ CNNs ต่างจาก Neural Networks อื่นๆ ตรงที่  s
 % \subsection{Transfer Learning}
 \begin{figure}[h]
   \begin{center}
-  % \includegraphics{pic/webrtc.png}
+ 
   \includegraphics[scale=0.45]{pic/The-architecture-transfer-learning.png}\cite{Transfer}
   \end{center}
   
@@ -283,7 +282,7 @@ Transfer learning  นั้นช่วยในการพัฒนากา�
 
 % Using \verb.\label. and \verb.\ref. commands allows us to refer to
 % figures easily. If we can refer to Figures
-% \ref{fig:walrus} and \ref{fig:sample-figure} and \ref{fig:webrtc}  by name in the {\LaTeX}
+ 
 % source code, then we will not need to update the code that refers to it
 % even if the placement or ordering of the figures changes.
 

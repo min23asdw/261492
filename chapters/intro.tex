@@ -47,7 +47,7 @@
     \item Python และ Aiortc : สำหรับพัฒนาในส่วนของ Backend การรับข้อมูลสตรีมมิ่งจากแอพลิเคชัน การฝึกสอนโมเดล และการ classify Product
     โดยไม่ต้องคอยเลือกชนิดของสินค้านั้นๆ
     \item Flask และ Next.js: สําหรับการพัฒนา Frontend ในส่วนเว็บไซต์ของร้านค้า (Website Dashboard)
-    \item Flutter แลพ Webrtc: สำหรับพัฒนา Frontend  ในส่วน Application ในโทรศัพท์มือถือของลูกค้า และใช้ Webrtc ในการสตีมมิ่งภาพจากกล้องโทรศัพท์มือถือไปยังส่วน Backend เพื่อทำการประมวลผล
+    \item Flutter และ WebSocket: สำหรับพัฒนา Frontend  ในส่วน Application ในโทรศัพท์มือถือของลูกค้า และใช้ WebSocket ในการสตีมมิ่งภาพจากกล้องโทรศัพท์มือถือไปยังส่วน Backend เพื่อทำการประมวลผล
     \item Supabase: สําหรับเก็บฐานข้อมูลทั้งหมดที่แสดงผล
 
 \end{enumerate}
@@ -58,7 +58,7 @@
 
 \section{\ifenglish Project plan\else แผนการดำเนินงาน\fi}
 % \begin{table}[h]
-%     % \includegraphics{pic/webrtc.png}
+%  
 %     \begin{plan}{1}{2023}{3}{2024}
 %         \planitem{1}{2023}{2}{2023}{Planning}
 %         \planitem{3}{2023}{3}{2023}{Document}
@@ -73,7 +73,7 @@
 %     \end{table}
     \begin{table}[h]
         \begin{center}
-        % \includegraphics{pic/webrtc.png}
+      
         \vspace{0.5cm}\includegraphics[scale=0.64]{pic/plane.png}
         \end{center}
         
@@ -86,7 +86,7 @@
 นายพงศกร รัตนพันธ์ รหัส 630610749 รับผิดชอบในส่วนของ Backend ดังนี้
 
 \begin{enumerate}
-    \item การรับข้อมูลสตรีมมิ่งจากระหว่าง Mobile Application และ  Classifier ผ่าน WebRTC
+    \item การรับข้อมูลสตรีมมิ่งจากระหว่าง Mobile Application และ  Classifier ผ่าน WebSocket
     \item การฝึกสอนโมเดลเพื่อทำ Product classification
     \item การจัดเก็บฐานข้อมูลข้อมูลรูปภาพของสินค้าเพื่อทำการฝึกสอนโมเดล
 \end{enumerate}
