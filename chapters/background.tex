@@ -8,8 +8,13 @@
 
 \section{WebSocket for Streaming image \cite{WebSocket}}
 \par WebSocket (computer communications protocol)
-\ref{fig:WebSocket structure}
 
+WebSocket เป็น Protocol ชนิดหนึ่ง ซึ่งทำงานบน Socket ที่เชื่อมต่อกันระหว่างอุปกรณ์ที่เป็นการเชื่อมต่อแบบ
+ TCP ( Transmission Control Protocol ) ดังรูป \ref{fig:WebSocket structure}
+
+โดย WebSocket สามารถรองรับการทำ Full Duplex หรือ Bidirectional Communication (การสื่อสารแบบสองทิศทาง หมายถึง เป็นผู้รับและผู้ส่งได้ในเวลาเดียวกัน)
+ซึ่งทำให้นิยมนำมาใช้กับระบบที่ต้องการการอัพเดทข้อมูลแบบ Realtime เช่น ระบบ Chat, ระบบ Notification, ระบบหุ้น, Game, Developer Tools ต่างๆ
+โดยในโครงงานนี้ได้ใช้ในการรับข้อมูลสตรีมมิ่งจากระหว่าง Mobile application และ  Classifier server เพื่อส่งข้อมูลแบบ Realtime
 
 \begin{figure}[h]
   \begin{center}
@@ -21,6 +26,7 @@
   \label{fig:WebSocket structure}
 \end{figure}
 
+\newpage
 
 
 \section{Artificial neural networks \cite{ANN}}
@@ -30,7 +36,7 @@
 ซึ่งประกอบด้วยหน่วยเล็กๆ เรียกว่า cell Neuron แต่ละ Neuron ก็จะเชื่อมต่อโยงใยกันด้วยเส้นประสาทเรียกว่า ไซแนปส์ (Synapse) เพื่อส่งสัญญาณไฟฟ้า ที่เกิดจากสิ่งเร้าต่างๆ ว่าจะตอบสนองต่อสิ่งเร้านั้นอย่างไร
 โดยแต่ละ Neuron จะได้รับ Input หลาย ๆ อัน จากกิ่งก้านสาขาของ Dendrite แล้วนำมาประมวลผล ออกมาเป็น 1 Output ออกไปที่ Axon เพื่อส่งต่อไปให้ Dendrite ของ Neuron อื่น ๆ ใช้เป็น Input ต่อไป
 
-เมื่อมนุษย์เติบโดขึ้น หาก Neuron ไหนตอบสนองต่อสิ่งเร้าประเภทไหนได้ดี ก็จะสามารถส่งสัญญาณไฟฟ้าได้แรง มากกว่า Neuron อื่นๆ
+เมื่อมนุษย์เติบโดขึ้น หาก Neuron ไหนตอบสนองต่อสิ่งเร้าประเภทไหนได้ดี ก็จะสามารถส่งสัญญาณไฟฟ้าที่มีความแรงมากกว่า Neuron อื่นๆ
 เมื่อ Neuron หลายๆอันต่อกันหลายๆ layer ก็จะกลายเป็น Neuron network ของมนุษย์
 
 โดยในทาง  Computational Intelligence จะใช้ node เป็นตัวแทนของ Neuron โดยจะเรียงเป็นชั้นๆ (layer)
@@ -181,7 +187,7 @@ CNNs ต่างจาก Neural Networks อื่นๆ ตรงที่  s
 \begin{figure}[h]
   \begin{center}
 
-    \includegraphics[scale=0.45]{pic/model/The-architecture-transfer-learning.png}\cite{Transfer}
+    \includegraphics[scale=0.25]{pic/model/The-architecture-transfer-learning_1.png}\cite{Transfer}
   \end{center}
 
   \caption[The concept of transfer learning]{The concept of transfer learning}
@@ -212,7 +218,7 @@ ${\displaystyle f:{\mathcal {X}}\rightarrow {\mathcal {Y}}}$.
 ทำการเรียนรู้จากชุดข้อมูลฝึกสอนที่เป็นคู่อันดับ ${\displaystyle \{x_{i},y_{i}\}}$, โดยที่ ${\displaystyle x_{i}\in {X}}$ และ ${\displaystyle y_{i}\in {Y}}$.
 
 %  Given a source domain ${\displaystyle {\mathcal {D}}_{S}}$ and learning task ${\displaystyle {\mathcal {T}}_{S}}$,
-หากมี domain ตั้งต้น${\displaystyle {\mathcal {D}}_{S}}$ และ learning task ตั้งต้น${\displaystyle {\mathcal {T}}_{S}}$,
+หากมี source domain ตั้งต้น${\displaystyle {\mathcal {D}}_{S}}$ และ learning task ตั้งต้น${\displaystyle {\mathcal {T}}_{S}}$,
 % a targer domain  ${\mathcal{D}_{T}}$ and learning task ${\mathcal{T}_{T}}$
 target domain  ${\mathcal{D}_{T}}$ และ learning task เป้าหมาย${\mathcal{T}_{T}}$
 % where ${\displaystyle {\mathcal {D}}_{S}\neq {\mathcal {D}}_{T}}$, or ${\displaystyle {\mathcal {T}}_{S}\neq {\mathcal {T}}_{T}}$, 
