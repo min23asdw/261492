@@ -137,7 +137,59 @@ Blind Test
 %     \caption[App edit]{App edit}
 % \label{fig:App edit}
 % \end{figure} 
+\newpage
+\section{ผลการ checkout}
+จากการทดลองและบันทึกผลของเรา ทำการบันทึกข้อมูลและค่าเฉลี่่ยได้ดังนี้
+(ขึ้นอยู่กับผู้ใช้งานแต่ละคน)
+\begin{table}[]
+    \centering
+    \caption{Camera classification process}
+    \begin{tabular}{|p{5cm}|p{4cm}|p{4cm}|}
+        \hline
+        \textbf{Camera Classification} & \textbf{ซื้อของ 1 ชิ้น (วินาที)} & \textbf{ซื้อของ 5 ชิ้น (วินาที)} \\
+        \hline
+        Camera streaming               & 2-5 s                         & 10-25 s                       \\
+        Image processing               & 1-2 s                         & 5-10 s                        \\
+        Payment transaction            & 2 s                           & 2 s                           \\
+        \hline
+        Total Time Usage               & 5-9 s                         & 17-37 s                       \\
+        \hline
+    \end{tabular}
+\end{table}
 
+
+\begin{table}[]
+    \centering
+    \caption{Camera barcode process}
+    \begin{tabular}{|p{5cm}|p{4cm}|p{4cm}|}
+        \hline
+        \textbf{Barcode payment} & \textbf{ซื้อของ 1 ชิ้น (วินาที)} & \textbf{ซื้อของ 5 ชิ้น (วินาที)} \\
+        \hline
+        Camera capture           & 2-5 s                         & 10-25 s                       \\
+        Barcode processing       & 0.5 s                         & 2.5 s                         \\
+        Payment transaction      & 2 s                           & 2 s                           \\
+        \hline
+        Total Time Usage         & 2.5-7 s                       & 14.5-29.5 s                   \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\begin{table}[]
+    \centering
+    \caption{Line Checkout process}
+    \begin{tabular}{|p{5cm}|p{4cm}|p{4cm}|}
+        \hline
+        \textbf{Line Checkout Cashier} & \textbf{ซื้อของ 1 ชิ้น(seconds)} & \textbf{ซื้อของ 5 ชิ้น (seconds)} \\
+        \hline
+        Waiting in line                & 30-120 s                     & 30-120 s                      \\
+        Cashier processing             & 10-20 s                      & 20-40 s                       \\
+        Payment transaction            & 5-10 s                       & 5-10 s                        \\
+        \hline
+        Total Time Usage               & 45-150 s                     & 55-170 s                      \\
+        \hline
+    \end{tabular}
+\end{table}
 
 \newpage
 \section{ผลการทำงานของระบบเว็บไซต์สำหรับร้านค้า}
@@ -153,22 +205,22 @@ Blind Test
 
 \subsection{หน้าลงชื่อเข้าใช้งาน (Login)}
 สำหรับหน้านี้ จะเป็นหน้าแรกของการเข้าใช้งานระบบ โดยสามารถลงชื่อเข้าใช้งานได้เท่านั้น แต่จะไม่สามารถลงทะเบียนได้ เนื่องจากผู้ใช้งานระบบ ต้องเป็นผู้ดูแลระบบร้านค้า หรือพนักงานของร้าน ซึ่งจะถูกเพิ่มโดย Super Administer ซึ่งอาจเป็นเจ้าของร้าน หรือผู้จัดการร้าน โดยผู้ใช้งานสามารถขอข้อมูลรหัสผ่านจาก Super Administer โดยตรงเพื่อนำมาใช้เข้าสู่ระบบ\\
- {
-  \includegraphics[scale=0.35]{pic/ui/w26.png}
- }\\
- {
-  \includegraphics[scale=0.35]{pic/ui/w27.png}
- }\\
- {
-  \includegraphics[scale=0.35]{pic/ui/w1.png}
- }\\
- {
-  \includegraphics[scale=0.35]{pic/ui/w2.png}
- }\\
+{
+\includegraphics[scale=0.35]{pic/ui/w26.png}
+}\\
+{
+\includegraphics[scale=0.35]{pic/ui/w27.png}
+}\\
+{
+\includegraphics[scale=0.35]{pic/ui/w1.png}
+}\\
+{
+\includegraphics[scale=0.35]{pic/ui/w2.png}
+}\\
 
- \subsection{หน้าการตั้งค่าร้านค้า และผู้ดูแลร้านค้า (Store Settings)}
- สำหรับหน้านี้ผู้ใช้งานสามารถตั้งค่าชื่อร้าน สถานที่ตั้ง และประเภทร้านค้าได้ รวมถึงเป็นหน้าการจัดการผู้ดูแลระบบ โดยการแสดงผลสามารถแบ่งได้เป็น 2 กรณีตามสถานะของผู้ใช้งาน ได้แก่
- \begin{enumerate}
+\subsection{หน้าการตั้งค่าร้านค้า และผู้ดูแลร้านค้า (Store Settings)}
+สำหรับหน้านี้ผู้ใช้งานสามารถตั้งค่าชื่อร้าน สถานที่ตั้ง และประเภทร้านค้าได้ รวมถึงเป็นหน้าการจัดการผู้ดูแลระบบ โดยการแสดงผลสามารถแบ่งได้เป็น 2 กรณีตามสถานะของผู้ใช้งาน ได้แก่
+\begin{enumerate}
     \item Super Administer: สามารถดูรายชื่อ เพิ่ม หรือลบผู้ดูแลระบบร้านค้า (Administer) ได้ และสามารถแก้ไขมูลสถานะ และบทบาทของผู้ดูแลระบบร้านค้า และแก้ไขข้อมูลของตนเองได้
     \item Administer: สามารถดู และแก้ไขข้อมูลของตนเองได้เท่านั้น
 \end{enumerate}
@@ -259,7 +311,7 @@ Blind Test
 %     \item Stock manager page > Get product stock history: หน้าต่างการเพิ่มติดตามประวัติคลังสินค้า
 %     \item Stock manager page > Delete product: หน้าต่างการลบสินค้า
 %     \item Stock manager page > Edit product: หน้าต่างการแก้ไขสินค้า
-%     \item Selling report page: หน้าการแสดงผลข้อมูลยอดขายตามรายวัน รายเดือน และรายปี โดยสามารถดูตามหมวดหมู่ของสินค้า หรือแยกตามสินค้าหนึ่ง ๆได้
+%     \item Selling report page: หน้าการแสดงผลข้อมูลยอดขายตามรายวัน รายเดือน และรายปี โดยสามารถดูตามหมวดหมู่ของสินค้า หร���อแยกตามสินค้าหนึ่ง ๆได้
 %     \item Selling report page > Date Time Picker: เลือกวันที่ต้องการติดตามรายงานยอดขาย
 %     \item Selling report page > Graph: แสดงรายงานยอดขายผ่านแผนภาพ
 %     \item Selling report page > Table: แสดงรายงานยอดขายผ่านตารางจากมากไปน้อย
