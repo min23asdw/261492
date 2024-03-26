@@ -25,13 +25,14 @@
 จากทั้ง 4 Fold ทำการเลือก model ที่มีค่า Validation Score สูงสุดจากใน 4 model
 โดยนำ model นี้ไปทำการ Evaluate ด้วย Dataset ที่ไม่เคยเห็น (Blind Test)
 
- 
+
 \begin{align}
     \text{cross\_entropy} & = 1.175 \\
     \text{accuracy}       & = 0.72
 \end{align}
 
 
+โดยผลการทำนายของ model  จาก Blind Test ได้เป็น Confusion matrix ดังรูป \ref{fig:Confusion matrix}
 \begin{figure}[h]
     \begin{center}
 
@@ -48,95 +49,105 @@
 \newpage
 \section{ผลการทำงานของระบบแอปพลิเคชันบนโทรศัพท์มือถือ}
 
-% \begin{figure}[h]
-%     \begin{center}
 
-%     \includegraphics[scale=0.25]{pic/ui/mobileui.jpg}
-%     \end{center}
 
-%     \caption[Application wire frame]{Application wire frame}
-%     \label{fig:Application wire frame}
-%     \end{figure} 
-
-ในส่วนของการออกแบบส่วนสื่อประสานกับผู้ใช้ (GUI) ของแอพลิเคชันมือถือนั้น ได้กำหนดให้มีหน้าการใช้งานหลักทั้งหมด 7 หน้า ได้แก่
-
+จากการปฏิบัติงาน สามารถพัฒนา Application สำหรับ ลูกค้า ได้เสร็จสมบูรณ์ โดยสามารถแสดงผลการทำงานของหน้า Application แบ่งตามแต่ละหน้า ได้ดังนี้
 \begin{enumerate}
-    \item Login page: หน้าการเข้าสู่ระบบ
-    \item Register page: หน้าลงทะเบียนเข้าใช้งาน
-    \item Home page: หน้าแสดงชื่อผู้ใช้ และเมนูของฟังก์ชันต่าง ๆ
-    \item Streaming page: หน้าฟังก์ชันการสตรีมมิ่งรูปภาพสินค้าผ่านกล้องมือถือแบบเรียลไทม์ ซึ่งจะแสดงชื่อ และราคาของสินค้า ซึ่งมีปุ่มการทำงานดังนี้ ปุ่มกดดูรายละเอียดสินค้า ,  ปุ่มเพิ่มสินค้าลงตะกร้า , ปุ่มกดดูสินค้าในตะกร้า
-    \item Product Stock page: หน้าแสดงรายละเอียดของสินค้า
-    \item My cart page: หน้าแสดง และจัดการเพิ่ม-ลบสินค้าในตะกร้า
-    \item History page: หน้าแสดงประวัติการซื้อสินค้า
+    \item หน้าแสดงสินค้า และ รายละเอียดของสินค้า (Stock page)
+    \item หน้าแสกนสินค้า หรือ อ่าน barcode โดยใช้กล้อง (Streaming page)
+    \item หน้าลงชื่อเข้าใช้งาน และ ลงทะเบียนเข้าใช้งาน (Login / Register page)
+    \item หน้าการตั้งค่าผู้ใช้  (Profile / Edit profile page )
+    \item หน้าแสดงตะกร้าสินค้าที่ผู้ใช้เลือก (cart page)
+    \item หน้าแสดงประวัติการซื้อสินค้าของลูกค้า (History page)
 \end{enumerate}
 
-\begin{figure}
-    \begin{center}
-        \begin{tabular}{c@{\hspace{3cm}}c}
+\newpage
 
-            \includegraphics[scale=0.4]{pic/moblie/login.jpg}   & \includegraphics[scale=0.4]{pic/moblie/signup.jpg} \\
-            Login                                               & Signup                                             \\[6pt]
 
-            \includegraphics[scale=0.4]{pic/moblie/profile.jpg} & \includegraphics[scale=0.4]{pic/moblie/edit.jpg}   \\
-            Profile                                             & Edit profile                                       \\[6pt]
-        \end{tabular}
-    \end{center}
-\end{figure}
+\subsection{หน้าแสดงสินค้า และ รายละเอียดของสินค้า (Stock page)}
+สามารถกดดูข้อมูลสินค้าที่เลือก ดูจำนวนคงเหลือ ราคา คำอธิบายสินค้า และ สามารถค้นหาสินค้าได้\\
+และสามารถเพิ่มสินค้าเข้าไปยัง ตระกร้าสินค้า (cart) ได้\\
+\begin{center}
+    \begin{tabular}{c@{\hspace{3cm}}c}
 
-\begin{figure}
-    \begin{center}
-        \begin{tabular}{c@{\hspace{3cm}}c}
+        \includegraphics[scale=0.3]{pic/moblie/stock.jpg} & \includegraphics[scale=0.3]{pic/moblie/search_products.jpg} \\
+        Stock                                             & Search products
+    \end{tabular}
+\end{center}
 
-            \includegraphics[scale=0.4]{pic/moblie/stock.jpg}        & \includegraphics[scale=0.4]{pic/moblie/search_products.jpg} \\
-            Stock                                                    & Search products                                             \\[6pt]
+\begin{center}
+    \begin{tabular}{c@{\hspace{3cm}}c}
+        \includegraphics[scale=0.3]{pic/moblie/stock_detail.jpg} & \includegraphics[scale=0.3]{pic/moblie/cart.png} \\
+        Product detail                                           & Add to cart
+    \end{tabular}
+\end{center}
 
-            \includegraphics[scale=0.4]{pic/moblie/stock_detail.jpg} & \includegraphics[scale=0.4]{pic/moblie/history.jpg}         \\
-            Product detail                                           & Purchase history                                            \\[6pt]
-        \end{tabular}
-    \end{center}
-\end{figure}
 
-\begin{figure}
-    \begin{center}
-        \begin{tabular}{c@{\hspace{3cm}}c}
 
-            \includegraphics[scale=0.4]{pic/moblie/camera_ai.png} & \includegraphics[scale=0.4]{pic/moblie/camera_barcode.png} \\
-            Camera streaming                                      & Camera barcode                                             \\[6pt]
+\newpage
+\subsection{หน้าแสกนสินค้า หรือ อ่าน barcode โดยใช้กล้อง (Streaming page)}
+ผู้ใช้สามารถใช้ กล้องของ smart phone ส่องไปที่สินค้าเพื่อทำการ Streaming รูปของสินค้า ไปยัง Classification Server
+หรือ สามารถ เลือกที่จะแสกน barcode ของสินค้า เพื่อทำการเพิ่มสินค้าเข้าตะกร้า (cart)ได้
+\begin{center}
+    \begin{tabular}{c@{\hspace{3cm}}c}
+        \includegraphics[scale=0.3]{pic/moblie/camera_ai.png} & \includegraphics[scale=0.3]{pic/moblie/camera_barcode.png} \\
+        Camera streaming                                      & Camera barcode
+    \end{tabular}
+\end{center}
 
-            \includegraphics[scale=0.4]{pic/moblie/cart.png}      & \includegraphics[scale=0.4]{pic/moblie/checkout.png}       \\
-            Cart                                                  & Checkout                                                   \\[6pt]
-        \end{tabular}
-    \end{center}
-\end{figure}
-% \begin{figure}[h]
-%     \begin{center}
 
-%         \includegraphics[scale=0.1]{pic/moblie/login.jpg}
-%     \end{center}
+\subsection{หน้าลงชื่อเข้าใช้งาน และ ลงทะเบียนเข้าใช้งาน (Login / Register  page)}
+สำหรับหน้านี้  โดยสามารถลงชื่อเข้าใช้งาน หรือ สามารถสมัครสมาชิกได้ โดยการใช้ Email และ Password\\
 
-%     \caption[App Login]{App Login}
-% \label{fig:App Login}
-% \end{figure} 
+\begin{center}
+    \begin{tabular}{c@{\hspace{3cm}}c}
 
-% \begin{figure}[h]
-%     \begin{center}
+        \includegraphics[scale=0.3]{pic/moblie/login.jpg} & \includegraphics[scale=0.3]{pic/moblie/signup.jpg} \\
+        Login                                             & Signup
+    \end{tabular}
+\end{center}
 
-%         \includegraphics[scale=0.1]{pic/moblie/signup.jpg}
-%     \end{center}
 
-%     \caption[App signup]{App signup}
-% \label{fig:App signup}
-% \end{figure} 
 
-% \begin{figure}[h]
-%     \begin{center}
 
-%         \includegraphics[scale=0.1]{pic/moblie/edit.jpg}
-%     \end{center}
+\newpage
+\subsection{หน้าการตั้งค่าผู้ใช้   (Profile page / Edit profile page)}
+สำหรับหน้านี้  เมื่อผู้ใช้ทำการเข้าสู้ระบบ สามารถทำการก้ไขข้อมูลส่วนตัวของผู้ใช้ได้  และ สามารถเติมเงินเสมือน (Mock Credit) เพื่อใช้ในการซื้อสินค้าได้\\
+\begin{center}
+    \begin{tabular}{c@{\hspace{3cm}}c}
 
-%     \caption[App edit]{App edit}
-% \label{fig:App edit}
-% \end{figure} 
+        \includegraphics[scale=0.3]{pic/moblie/profile.jpg} & \includegraphics[scale=0.3]{pic/moblie/edit.jpg} \\
+        Profile                                             & Edit profile
+    \end{tabular}
+\end{center}
+
+
+
+\subsection{หน้าแสดงตะกร้าสินค้าที่ผู้ใช้เลือก (cart page)  }
+สินค้าที่ผู้ใช้ได้ทำการเลือกเพิ่มเข้ามาในตะกร้า ไม่ว่าจะมาจาก Stock page, Streaming page จะถูกสรุปเป็นรายการและจำนวนเงินที่ผู้ใช้ต้องทำการจ่าย
+โดยผู้ใช้สามารถกด checkout และตัดเงินจาก Credit\\
+\begin{center}
+    \begin{tabular}{c@{\hspace{3cm}}c}
+        \includegraphics[scale=0.3]{pic/moblie/cart.png} & \includegraphics[scale=0.3]{pic/moblie/checkout.png} \\
+        Cart                                             & Checkout
+    \end{tabular}
+\end{center}
+
+
+\subsection{หน้าแสดงประวัติการซื้อสินค้าของลูกค้า (History page) }
+โดยเมื่อทำการ checkout เสร็จแล้ว  Credit ก็จะถูฏตัด รวมถึง Stock ของสิ้นค้าภายในร้าน โดยประวัติการซื้อของผู้ใช้ก็จะสามารถดูได้ภายใน Application
+\begin{center}
+    \begin{tabular}{c@{\hspace{3cm}}c}
+        \includegraphics[scale=0.3]{pic/moblie/profile.jpg} & \includegraphics[scale=0.3]{pic/moblie/history.jpg} \\
+        Purchase history                                    & Purchase history
+    \end{tabular}
+\end{center}
+
+
+
+
+
+
 \newpage
 \section{ผลการ checkout}
 จากการทดลองและบันทึกผลของเรา ทำการบันทึกข้อมูลและค่าเฉลี่่ยได้ดังนี้
@@ -148,11 +159,11 @@
         \hline
         \textbf{Camera Classification} & \textbf{ซื้อของ 1 ชิ้น (วินาที)} & \textbf{ซื้อของ 5 ชิ้น (วินาที)} \\
         \hline
-        Camera streaming               & 2-5 s                         & 10-25 s                       \\
-        Image processing               & 1-2 s                         & 5-10 s                        \\
-        Payment transaction            & 2 s                           & 2 s                           \\
+        Camera streaming               & 2-5 s                      & 10-25 s                    \\
+        Image processing               & 1-2 s                      & 5-10 s                     \\
+        Payment transaction            & 2 s                        & 2 s                        \\
         \hline
-        Total Time Usage               & 5-9 s                         & 17-37 s                       \\
+        Total Time Usage               & 5-9 s                      & 17-37 s                    \\
         \hline
     \end{tabular}
 \end{table}
@@ -165,11 +176,11 @@
         \hline
         \textbf{Barcode payment} & \textbf{ซื้อของ 1 ชิ้น (วินาที)} & \textbf{ซื้อของ 5 ชิ้น (วินาที)} \\
         \hline
-        Camera capture           & 2-5 s                         & 10-25 s                       \\
-        Barcode processing       & 0.5 s                         & 2.5 s                         \\
-        Payment transaction      & 2 s                           & 2 s                           \\
+        Camera capture           & 2-5 s                      & 10-25 s                    \\
+        Barcode processing       & 0.5 s                      & 2.5 s                      \\
+        Payment transaction      & 2 s                        & 2 s                        \\
         \hline
-        Total Time Usage         & 2.5-7 s                       & 14.5-29.5 s                   \\
+        Total Time Usage         & 2.5-7 s                    & 14.5-29.5 s                \\
         \hline
     \end{tabular}
 \end{table}
