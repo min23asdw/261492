@@ -46,7 +46,7 @@ Blind Test
 
 
 \newpage
-\section{Application UX/UI}
+\section{ผลการทำงานของระบบแอปพลิเคชันบนโทรศัพท์มือถือ}
 
 % \begin{figure}[h]
 %     \begin{center}
@@ -69,9 +69,6 @@ Blind Test
     \item My cart page: หน้าแสดง และจัดการเพิ่ม-ลบสินค้าในตะกร้า
     \item History page: หน้าแสดงประวัติการซื้อสินค้า
 \end{enumerate}
-
-
-
 
 \begin{figure}
     \begin{center}
@@ -143,8 +140,19 @@ Blind Test
 
 
 \newpage
-\section{Web Dashboard UX/UI}
- % \begin{center}
+\section{ผลการทำงานของระบบเว็บไซต์สำหรับร้านค้า}
+จากการปฏิบัติงาน สามารถพัฒนาระบบระบบเว็บไซต์สำหรับร้านค้าได้เสร็จสมบูรณ์ โดยสามารถแสดงผลการทำงานของหน้าเว็บไซต์แบ่งตามแต่ละหน้าของเว็บไซต์ได้ดังนี้
+\begin{enumerate}
+    \item หน้าลงชื่อเข้าใช้งาน (Login)
+    \item หน้าการตั้งค่าร้านค้า และผู้ดูแลร้านค้า (Store Settings)
+    \item หน้าการจัดการสินค้า (Stock Manager)
+    \item หน้าแสดงรายงานยอดขายสินค้า (Selling Report)
+    \item หน้าแสดงข้อมูลลูกค้า (Customers)
+    \item หน้าแสดงประวัติการซื้อสินค้าของลูกค้า (Purchase History)
+\end{enumerate}
+
+\subsection{หน้าลงชื่อเข้าใช้งาน (Login)}
+สำหรับหน้านี้ จะเป็นหน้าแรกของการเข้าใช้งานระบบ โดยสามารถลงชื่อเข้าใช้งานได้เท่านั้น แต่จะไม่สามารถลงทะเบียนได้ เนื่องจากผู้ใช้งานระบบ ต้องเป็นผู้ดูแลระบบร้านค้า หรือพนักงานของร้าน ซึ่งจะถูกเพิ่มโดย Super Administer ซึ่งอาจเป็นเจ้าของร้าน หรือผู้จัดการร้าน โดยผู้ใช้งานสามารถขอข้อมูลรหัสผ่านจาก Super Administer โดยตรงเพื่อนำมาใช้เข้าสู่ระบบ\\
  {
   \includegraphics[scale=0.35]{pic/ui/w26.png}
  }\\
@@ -157,9 +165,18 @@ Blind Test
  {
   \includegraphics[scale=0.35]{pic/ui/w2.png}
  }\\
+
+ \subsection{หน้าการตั้งค่าร้านค้า และผู้ดูแลร้านค้า (Store Settings)}
+ สำหรับหน้านี้ผู้ใช้งานสามารถตั้งค่าชื่อร้าน สถานที่ตั้ง และประเภทร้านค้าได้ รวมถึงเป็นหน้าการจัดการผู้ดูแลระบบ โดยการแสดงผลสามารถแบ่งได้เป็น 2 กรณีตามสถานะของผู้ใช้งาน ได้แก่
+ \begin{enumerate}
+    \item Super Administer: สามารถดูรายชื่อ เพิ่ม หรือลบผู้ดูแลระบบร้านค้า (Administer) ได้ และสามารถแก้ไขมูลสถานะ และบทบาทของผู้ดูแลระบบร้านค้า และแก้ไขข้อมูลของตนเองได้
+    \item Administer: สามารถดู และแก้ไขข้อมูลของตนเองได้เท่านั้น
+\end{enumerate}
 {
 \includegraphics[scale=0.35]{pic/ui/w3.png}
 }\\
+\subsection{หน้าการจัดการสินค้า (Stock Manager)}
+สำหรับหน้านี้จะแสดงรายการสินค้าทั้งหมดแยกตามหมวดหมู่ พร้อมข้อมูลทั้งหมด ได้แก่ ชื่อสินค้า รูปสินค้า ข้อมูลสินค้า ราคา จำนวนในคลัง และประวัติคลังสินค้า โดยสามารถทำการเพิ่ม ลบ และแก้ไขข้อมูลทั้งหมดได้ ดังนี้\\
 {
 \includegraphics[scale=0.35]{pic/ui/w4.png}
 }\\
@@ -191,6 +208,8 @@ Blind Test
 {
 \includegraphics[scale=0.35]{pic/ui/w14.png}
 }\\
+\subsection{หน้าแสดงรายงานยอดขายสินค้า (Selling Report)}
+เมื่อโหลดหน้าใหม่จะแสดงข้อมูลยอดขายของวันที่ปัจจุบันผ่านการ์ดข้อมูล แผนภูมิ และตาราง ในโหมดรายวัน ตามสินค้าทั้งหมด สามารถเลือกวันที่ที่ต้องการ และเปลี่ยนการแสดงผลตามรายวัน รายสัปดาห์ รายเดือน และรายปี ตามหมวดหมู่ของสินค้า หรือตามสินค้าทั้งหมดได้\\
 {
 \includegraphics[scale=0.35]{pic/ui/w15.png}
 }\\
@@ -215,34 +234,38 @@ Blind Test
 {
 \includegraphics[scale=0.35]{pic/ui/w22.png}
 }\\
+\subsection{หน้าแสดงประวัติการซื้อสินค้าของลูกค้า (Purchase History)}
+สำหรับหน้านี้จะแสดงรายการการซื้อของลูกค้าแต่ละครั้งในรูปแบบการ์ด ประกอบไปด้วยชื่อ วัน และเวลาที่ซื้อ และจำนวนเงินที่จ่าย เมื่อกดที่การ์ดจะแสดงรายการสินค้าที่ซื้อ จำนวนที่ซื้อ และราคาของสินค้าแต่ละชิ้น\\
 {
 \includegraphics[scale=0.35]{pic/ui/w23.png}
 }\\
+\subsection{หน้าแสดงข้อมูลลูกค้า (Customers)}
+สำหรับหน้านี้จะแสดงข้อมูลของลูกค้าแต่ละคนผ่านตาราง ได้แก่ ชื่อลูกค้า วันเกิด วันที่ลงทะเบียน และอีเมล์ และผ่านการ์ดข้อมูล ได้แก่จำนวนลูกค้าทั้งหมด จำนวนลูกค้าที่ลงทะเบียนใหม่ใน 7 วันที่ผ่านมา\\
 {
 \includegraphics[scale=0.35]{pic/ui/w24.png}
 }\\
 
 
-ในส่วนของการออกแบบส่วนสื่อประสานกับผู้ใช้ (GUI) ของ Website Dashboard นั้น ได้มีการพัฒนาตามที่ออกแบบไว้ แต่มีการปรับเปลี่ยนดีไซน์ และสีของหน้าเล็กน้อย แสดงผลลัพธ์การใช้งานได้ดังนี้
-\begin{enumerate}
-    \item Get started page: หน้าการเข้าสู่ระบบ หรือลงทะเบียนเข้าใช้งาน
-    \item Login page: หน้าการเข้าสู่ระบบ
-    \item Home page:  หน้าแสดงเมนูของฟังก์ชันต่าง ๆ
-    \item Menu bar:  แสดงเมนูของฟังก์ชันต่าง ๆ
-    \item Stock manager page: หน้าการจัดการคลังสินค้า
-    \item Stock manager page > Add new category: หน้าต่างการเพิ่มประเภทสินค้าใหม่
-    \item Stock manager page > Delete category: หน้าต่างการลบประเภทสินค้า
-    \item Stock manager page > Add new product: หน้าต่างการเพิ่มสินค้าใหม่
-    \item Stock manager page > Get product stock history: หน้าต่างการเพิ่มติดตามประวัติคลังสินค้า
-    \item Stock manager page > Delete product: หน้าต่างการลบสินค้า
-    \item Stock manager page > Edit product: หน้าต่างการแก้ไขสินค้า
-    \item Selling report page: หน้าการแสดงผลข้อมูลยอดขายตามรายวัน รายเดือน และรายปี โดยสามารถดูตามหมวดหมู่ของสินค้า หรือแยกตามสินค้าหนึ่ง ๆได้
-    \item Selling report page > Date Time Picker: เลือกวันที่ต้องการติดตามรายงานยอดขาย
-    \item Selling report page > Graph: แสดงรายงานยอดขายผ่านแผนภาพ
-    \item Selling report page > Table: แสดงรายงานยอดขายผ่านตารางจากมากไปน้อย
-    \item Purchase History page: หน้าการติดตามประวัติการซื้อของลูกค้า
-    \item Customer page: หน้าแสดงข้อมูลของลูกค้าที่ลงทะเบียนผ่านโมบายแอปพลิเคชัน
-\end{enumerate}
+% ในส่วนของการออกแบบส่วนสื่อประสานกับผู้ใช้ (GUI) ของ Website Dashboard นั้น ได้มีการพัฒนาตามที่ออกแบบไว้ แต่มีการปรับเปลี่ยนดีไซน์ และสีของหน้าเล็กน้อย แสดงผลลัพธ์การใช้งานได้ดังนี้
+% \begin{enumerate}
+%     \item Get started page: หน้าการเข้าสู่ระบบ หรือลงทะเบียนเข้าใช้งาน
+%     \item Login page: หน้าการเข้าสู่ระบบ
+%     \item Home page:  หน้าแสดงเมนูของฟังก์ชันต่าง ๆ
+%     \item Menu bar:  แสดงเมนูของฟังก์ชันต่าง ๆ
+%     \item Stock manager page: หน้าการจัดการคลังสินค้า
+%     \item Stock manager page > Add new category: หน้าต่างการเพิ่มประเภทสินค้าใหม่
+%     \item Stock manager page > Delete category: หน้าต่างการลบประเภทสินค้า
+%     \item Stock manager page > Add new product: หน้าต่างการเพิ่มสินค้าใหม่
+%     \item Stock manager page > Get product stock history: หน้าต่างการเพิ่มติดตามประวัติคลังสินค้า
+%     \item Stock manager page > Delete product: หน้าต่างการลบสินค้า
+%     \item Stock manager page > Edit product: หน้าต่างการแก้ไขสินค้า
+%     \item Selling report page: หน้าการแสดงผลข้อมูลยอดขายตามรายวัน รายเดือน และรายปี โดยสามารถดูตามหมวดหมู่ของสินค้า หรือแยกตามสินค้าหนึ่ง ๆได้
+%     \item Selling report page > Date Time Picker: เลือกวันที่ต้องการติดตามรายงานยอดขาย
+%     \item Selling report page > Graph: แสดงรายงานยอดขายผ่านแผนภาพ
+%     \item Selling report page > Table: แสดงรายงานยอดขายผ่านตารางจากมากไปน้อย
+%     \item Purchase History page: หน้าการติดตามประวัติการซื้อของลูกค้า
+%     \item Customer page: หน้าแสดงข้อมูลของลูกค้าที่ลงทะเบียนผ่านโมบายแอปพลิเคชัน
+% \end{enumerate}
 
 
 % \end{center}
