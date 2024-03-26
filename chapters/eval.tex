@@ -6,9 +6,11 @@
 
 
 \section{Classification model}
-\par ผลลัพธ์ จากการ train \& validation ด้วย 3546 sample เป็นจำนวน 200 Epoch
+\par ผลลัพธ์ จากการ train และ validation  Classification model ด้วย 3546 sample เป็นจำนวน 200 Epoch
+ทั้งหมด 4 Fold
 
-ตัวอย่าง ผลการทดลองของการ validation ด้วย 3546 sample
+
+\par ตัวอย่าง ผลการทดลองของการ validation ด้วย 3546 sample ในแต่ละ Fold
 \begin{figure}[h]
     \begin{center}
 
@@ -20,17 +22,15 @@
 \end{figure}
 
 % โดยเมื่อนำ evaluate มาหา cross_entropy 0.23343226313591003, 0.944695234298706 accuracy
+จากทั้ง 4 Fold ทำการเลือก model ที่มีค่า Validation Score สูงสุดจากใน 4 model
+โดยนำ model นี้ไปทำการ Evaluate ด้วย Dataset ที่ไม่เคยเห็น (Blind Test)
 
-และทำการเลือก model ที่มีค่า Validation Score สูงสุดจากใน 4 model
-เพื่อนำไปทำการ Blind Test
-โดยได้นำ model ใน  Fold 4   มาทำการ
-Evaluate (Blind Test)
+ 
 \begin{align}
     \text{cross\_entropy} & = 1.175 \\
     \text{accuracy}       & = 0.72
 \end{align}
 
-Blind Test
 
 \begin{figure}[h]
     \begin{center}
