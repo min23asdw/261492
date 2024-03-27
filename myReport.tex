@@ -21,16 +21,26 @@
 \usepackage[final]{graphicx} % for including graphics
 
 %% Add bookmarks and hyperlinks in the document.
+% \usepackage{url}
+% \usepackage{breakurl}
 \PassOptionsToPackage{hyphens}{url}
-\usepackage[colorlinks=true,allcolors=black,citecolor=black,linktoc=all]{hyperref}
-\def\UrlLeft#1\UrlRight{$#1$}
-
+% \usepackage{url}
+% \usepackage{breakurl}
+ 
+\usepackage[colorlinks=true,allcolors=black,citecolor=black,linktoc=all,breaklinks]{hyperref}
+\def\UrlLeft#1\UrlRight{$#1$} 
+	
+% \def\UrlBreaks{\do\/\do-}
+% \def\UrlBreaks{\do\/\do-}
 %% Needed just by this example, but maybe not by most reports
 \usepackage{afterpage} % for outputting
 \usepackage{pdflscape} % for landscape figures and tables. 
 \usepackage{multirow}
 \usepackage{tabularx}
 
+% \usepackage[numbers]{natbib}
+% \usepackage[sorting=none]{biblatex}
+\usepackage[numbers]{natbib}
 %% Some other useful packages. Look these up to find out how to use
 %% them.
 % \usepackage{natbib}    % for author-year citation styles
@@ -45,7 +55,9 @@
 %% the tolerance to 9999
 % \tolerance=9999
 
-\bibliographystyle{plain}
+% \bibliographystyle{plain}
+% \bibliographystyle{unsrt}
+\bibliographystyle{unsrtnat}
 % \bibliographystyle{IEEEbib}
 
 % \renewcommand{\topfraction}{0.85}

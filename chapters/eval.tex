@@ -5,6 +5,7 @@
   \fi}
 
 
+
 \section{Classification model}
 \par ผลลัพธ์ จากการ train และ validation  Classification model ด้วย 3546 sample เป็นจำนวน 200 Epoch
 ทั้งหมด 4 Fold
@@ -42,6 +43,63 @@
     \caption[Confusion matrix]{Confusion matrix}
     \label{fig:Confusion matrix}
 \end{figure}
+
+
+\newpage
+
+\section{ผลลัพธ์จากการฝึกสอน}
+การทดสอบ แบบชุดข้อมูล (Batch Detection) สําหรับการทดสอบ Model โดยได้ทำการทดลอง ฝึกสอน Model 
+\par โดยเป็นผลลัพธ์จาก Model ที่ดีที่สุดจากทั้ง 4 Fold
+ที่ฝึกสอนด้วย จำนวนรอบ(epoch) 100 และ 200  , batch size เป็น 32 และ 64 , และมีการใช้ Dropout Layer ที่ dropout rate เป็น 0 และ 0.5
+ได้ผลลัพธ์ ดังตาราง \ref{tab:model_train_performance} และผลลัพธ์จากการทดสอบด้วย Blind Dataset ดังตาราง \ref{tab:model_test_performance}
+
+\begin{table}[ht]
+    \centering
+    \caption{ผลลัพธ์จากการทดสอบ Model  โดยใช้ Train Dataset}
+    \label{tab:model_train_performance}
+
+    \begin{tabular}{|l|l|l|l|l|l|l|l|}
+        \hline
+        \multirow{2}{*}{Model name} & \multirow{2}{*}{Batch Size} & \multirow{2}{*}{Epoch} & \multirow{2}{*}{Dropout Rate} & \multicolumn{4}{c|}{Metrics}                                                    \\ \cline{5-8}
+                                    &                             &                        &                               & Accuracy                     & Precision      & Recall         & F1-Score       \\ \hline
+        64-100                      & 64                          & 100                    & -                             & 0.605                        & 0.483          & 0.651          & 0.555          \\ \hline
+        64-100-5                    & 64                          & 100                    & 0.5                           & 0.673                        & 0.391          & 0.823          & 0.530          \\ \hline
+        64-200                      & 64                          & 200                    & -                             & 0.674                        & 0.546          & 0.767          & 0.638          \\ \hline
+        64-200-5                    & 64                          & 200                    & 0.5                           & 0.698                        & 0.481          & 0.837          & 0.611          \\ \hline
+        32-100                      & 32                          & 100                    & -                             & 0.734                        & 0.572          & 0.797          & 0.666          \\ \hline
+        32-100-5                    & 32                          & 100                    & 0.5                           & 0.641                        & 0.469          & 0.766          & 0.582          \\ \hline
+        32-200                      & 32                          & 200                    & -                             & \textbf{0.859}               & \textbf{0.625} & 0.806          & \textbf{0.704} \\ \hline
+        32-200-5                    & 32                          & 200                    & 0.5                           & 0.766                        & 0.559          & \textbf{0.875} & 0.682          \\ \hline
+    \end{tabular}
+\end{table}
+
+
+\begin{table}[ht]
+    \centering
+    \caption{ผลลัพธ์จากการทดสอบ Model  โดยใช้ Blind Dataset}
+    \label{tab:model_test_performance}
+    \begin{tabular}{|l|l|l|l|l|l|l|l|}
+
+        \hline
+        \multirow{2}{*}{Model name} & \multirow{2}{*}{Batch Size} & \multirow{2}{*}{Epoch} & \multirow{2}{*}{Dropout Rate} & \multicolumn{4}{c|}{Metrics}                                                    \\ \cline{5-8}
+                                    &                             &                        &                               & Accuracy                     & Precision      & Recall         & F1-Score       \\ \hline
+        64-100                      & 64                          & 100                    & -                             & 0.551                        & 0.318          & 0.412          & 0.359          \\ \hline
+        64-100-5                    & 64                          & 100                    & 0.5                           & 0.492                        & 0.267          & 0.254          & 0.260          \\ \hline
+        64-200                      & 64                          & 200                    & -                             & 0.521                        & 0.365          & \textbf{0.591} & 0.451          \\ \hline
+        64-200-5                    & 64                          & 200                    & 0.5                           & 0.621                        & 0.402          & 0.342          & 0.370          \\ \hline
+        32-100                      & 32                          & 100                    & -                             & \textbf{0.647}               & 0.423          & 0.293          & 0.346          \\ \hline
+        32-100-5                    & 32                          & 100                    & 0.5                           & 0.572                        & 0.277          & 0.369          & 0.316          \\ \hline
+        32-200                      & 32                          & 200                    & -                             & 0.628                        & \textbf{0.459} & 0.343          & \textbf{0.393} \\ \hline
+        32-200-5                    & 32                          & 200                    & 0.5                           & 0.638                        & 0.382          & 0.381          & 0.381          \\ \hline
+    \end{tabular}
+\end{table}
+
+สําหรับการวัดผลได้แก่ Accuracy, Precision, Recall, และ F1-Score
+โดยโมเดลส่วนใหญ่ในการ Validation model ก็ให้ผลลัพธ์ Accuracy ที่ประมาน 70-80\%  ดังตาราง \ref{tab:model_train_performance}
+แต่ในส่วนของการ Blind Test จะได้ Accuracy อยู่ที่ประมาณ 50-60\% เท่านั้น ดังตาราง \ref{tab:model_test_performance}
+
+
+
 
 
 
@@ -184,7 +242,7 @@
         \hline
     \end{tabular}
 \end{table}
- 
+
 \begin{table}[h]
     \centering
     \caption{Line Checkout process}
@@ -321,7 +379,7 @@
 %     \item Stock manager page > Get product stock history: หน้าต่างการเพิ่มติดตามประวัติคลังสินค้า
 %     \item Stock manager page > Delete product: หน้าต่างการลบสินค้า
 %     \item Stock manager page > Edit product: หน้าต่างการแก้ไขสินค้า
-%     \item Selling report page: หน้าการแสดงผลข้อมูลยอดขายตามรายวัน รายเดือน และรายปี โดยสามารถดูตามหมวดหมู่ของสินค้า หร���อแยกตามสินค้าหนึ่ง ๆได้
+%     \item Selling report page: หน้าการแสดงผลข้อมูลยอดขายตามรายวัน รายเ��ือน และรายปี โดยสามารถดูตามหมวดหมู่ของสินค้า หร���อแยกตามสินค้าหนึ่ง ๆได้
 %     \item Selling report page > Date Time Picker: เลือกวันที่ต้องการติดตามรายงานยอดขาย
 %     \item Selling report page > Graph: แสดงรายงานยอดขายผ่านแผนภาพ
 %     \item Selling report page > Table: แสดงรายงานยอดขายผ่านตารางจากมากไปน้อย
